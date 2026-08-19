@@ -1,0 +1,219 @@
+INNER JOIN ASSIGNMENT (SCOTT EMP/DEPT DATABASE)
+Corrected for MySQL and validated against Oracle SCOTT schema.
+
+============================================================
+PART A
+============================================================
+
+Q1. WAQTD ENAME AND DNAME FOR ALL THE EMPLOYEES
+
+SELECT E.ENAME, D.DNAME
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO;
+
+(Output preserved from original file)
+
+------------------------------------------------------------
+
+Q2. WAQTD ENAME AND LOC FOR ALL THE EMPLOYEES WORKING AS MANAGER
+
+SELECT E.ENAME, D.LOC
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE E.JOB = 'MANAGER';
+
+(Output preserved from original file)
+
+------------------------------------------------------------
+
+Q3. WAQTD ENAME, SAL AND DNAME OF THE EMPLOYEE WORKING AS
+CLERK IN DEPT 20 WITH A SALARY OF MORE THAN 1800
+
+SELECT E.ENAME, E.SAL, D.DNAME
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE E.DEPTNO = 20
+  AND E.JOB = 'CLERK'
+  AND E.SAL > 1800;
+
+Result:
+Empty Set
+
+Reason:
+In the SCOTT schema, no CLERK in department 20 earns more than 1800.
+
+------------------------------------------------------------
+
+Q4. WAQTD ENAME, DEPTNO, DNAME AND LOC OF THE EMPLOYEE
+EARNING MORE THAN 2000 IN NEW YORK
+
+CORRECT QUERY:
+
+SELECT E.ENAME, D.DEPTNO, D.DNAME, D.LOC
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE E.SAL > 2000
+  AND D.LOC = 'NEW YORK';
+
+Original file was missing:
+AND D.LOC = 'NEW YORK'
+
+============================================================
+ASSIGNMENT ON INNER JOIN
+============================================================
+
+Q1. NAME OF THE EMPLOYEE AND HIS LOCATION OF ALL THE EMPLOYEES
+
+SELECT E.ENAME, D.LOC
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO;
+
+CORRECT
+
+------------------------------------------------------------
+
+Q2. WAQTD DNAME AND SALARY FOR ALL THE EMPLOYEES WORKING IN ACCOUNTING
+
+CORRECT QUERY:
+
+SELECT D.DNAME, E.SAL
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE D.DNAME = 'ACCOUNTING';
+
+Original file incorrectly used:
+WHERE E.JOB = 'ACCOUNTING'
+
+------------------------------------------------------------
+
+Q3. WAQTD DNAME AND ANNUAL SALARY FOR ALL EMPLOYEES WHOSE SALARY IS MORE THAN 2340
+
+SELECT D.DNAME,
+       E.SAL * 12 AS ANNUAL_SAL
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE E.SAL > 2340;
+
+CORRECT
+
+------------------------------------------------------------
+
+Q4. WAQTD ENAME AND DNAME FOR EMPLOYEES HAVING CHARACTER 'A' IN THEIR DNAME
+
+CORRECT QUERY:
+
+SELECT E.ENAME, D.DNAME
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE D.DNAME LIKE '%A%';
+
+Original file answered a different question using:
+E.ENAME LIKE '%A%'
+
+------------------------------------------------------------
+
+Q5. WAQTD ENAME AND DNAME FOR ALL THE EMPLOYEES WORKING AS SALESMAN
+
+SELECT E.ENAME, D.DNAME
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE E.JOB = 'SALESMAN';
+
+CORRECT
+
+------------------------------------------------------------
+
+Q6. WAQTD DNAME AND JOB FOR ALL THE EMPLOYEES WHOSE JOB
+AND DNAME STARTS WITH CHARACTER 'S'
+
+CORRECT QUERY:
+
+SELECT D.DNAME, E.JOB
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE D.DNAME LIKE 'S%'
+  AND E.JOB LIKE 'S%';
+
+Original file:
+- Selected ENAME instead of DNAME.
+- Did not filter JOB starting with S.
+
+------------------------------------------------------------
+
+Q7. WAQTD DNAME AND MGR NO FOR EMPLOYEES REPORTING TO 7839
+
+SELECT D.DNAME, E.MGR
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE E.MGR = 7839;
+
+CORRECT
+
+------------------------------------------------------------
+
+Q8. WAQTD DNAME AND HIREDATE FOR EMPLOYEES HIRED AFTER 1983
+INTO ACCOUNTING OR RESEARCH DEPT
+
+MySQL:
+
+SELECT D.DNAME, E.HIREDATE
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE E.HIREDATE > '1983-12-31'
+  AND D.DNAME IN ('ACCOUNTING', 'RESEARCH');
+
+Oracle equivalent:
+
+SELECT D.DNAME, E.HIREDATE
+FROM EMP E, DEPT D
+WHERE E.DEPTNO = D.DEPTNO
+  AND E.HIREDATE > TO_DATE('31-DEC-1983','DD-MON-YYYY')
+  AND D.DNAME IN ('ACCOUNTING', 'RESEARCH');
+
+Result:
+Empty Set
+
+------------------------------------------------------------
+
+Q9. WAQTD ENAME AND DNAME OF THE EMPLOYEES WHO ARE GETTING COMM
+IN DEPT 10 OR 30
+
+SELECT E.ENAME, D.DNAME
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE E.COMM IS NOT NULL
+  AND D.DEPTNO IN (10,30);
+
+CORRECT
+
+------------------------------------------------------------
+
+Q10. WAQTD DNAME AND EMPNO FOR ALL THE EMPLOYEES WHOSE EMPNO
+ARE (7839,7902) AND ARE WORKING IN LOC NEW YORK
+
+SELECT D.DNAME, E.EMPNO
+FROM EMP E
+JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE E.EMPNO IN (7839,7902)
+  AND D.LOC = 'NEW YORK';
+
+CORRECT
+
+Result:
+ACCOUNTING | 7839
+
+7902 is in RESEARCH (DALLAS), not NEW YORK.
