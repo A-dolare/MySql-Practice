@@ -1,0 +1,400 @@
+mysql> 
+mysql> 
+mysql> -- EX:
+mysql> 
+mysql> SELECT E1.ENAME, E2.ENAME
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> ;
++--------+-------+
+| ENAME  | ENAME |
++--------+-------+
+| FORD   | JONES |
+| SCOTT  | JONES |
+| JAMES  | BLAKE |
+| TURNER | BLAKE |
+| MARTIN | BLAKE |
+| WARD   | BLAKE |
+| ALLEN  | BLAKE |
+| MILLER | CLARK |
+| ADAMS  | SCOTT |
+| CLARK  | KING  |
+| BLAKE  | KING  |
+| JONES  | KING  |
+| SMITH  | FORD  |
++--------+-------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q2 
+mysql> 
+mysql> SELECT E1.ENAME, E1.SAL, E2.ENAME, E2.SAL
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> ;
++--------+------+-------+------+
+| ENAME  | SAL  | ENAME | SAL  |
++--------+------+-------+------+
+| FORD   | 3000 | JONES | 2975 |
+| SCOTT  | 3000 | JONES | 2975 |
+| JAMES  |  950 | BLAKE | 2850 |
+| TURNER | 1500 | BLAKE | 2850 |
+| MARTIN | 1250 | BLAKE | 2850 |
+| WARD   | 1250 | BLAKE | 2850 |
+| ALLEN  | 1600 | BLAKE | 2850 |
+| MILLER | 1300 | CLARK | 2450 |
+| ADAMS  | 1100 | SCOTT | 3000 |
+| CLARK  | 2450 | KING  | 5000 |
+| BLAKE  | 2850 | KING  | 5000 |
+| JONES  | 2975 | KING  | 5000 |
+| SMITH  |  800 | FORD  | 3000 |
++--------+------+-------+------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q3
+mysql> 
+mysql> SELECT E1.ENAME, E2.ENAME
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.EMPNO = E2.EMPNO
+    -> WHERE E1.JOB = 'CLERK';
++--------+--------+
+| ENAME  | ENAME  |
++--------+--------+
+| SMITH  | SMITH  |
+| ADAMS  | ADAMS  |
+| JAMES  | JAMES  |
+| MILLER | MILLER |
++--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT E1.ENAME, E2.ENAME
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR E2.EMPNO
+    -> ^C
+mysql> 
+mysql> 
+mysql> SELECT E1.ENAME, E2.ENAME
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E1.JOB = 'CLERK';
++--------+-------+
+| ENAME  | ENAME |
++--------+-------+
+| JAMES  | BLAKE |
+| MILLER | CLARK |
+| ADAMS  | SCOTT |
+| SMITH  | FORD  |
++--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q4
+mysql> 
+mysql> SELECT E1.ENAME, E2.JOB
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E2.JOB = 'ANALYST';
++-------+---------+
+| ENAME | JOB     |
++-------+---------+
+| SMITH | ANALYST |
+| ADAMS | ANALYST |
++-------+---------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q5
+mysql> 
+mysql> SELECT E1.ENAME, E1.SAL, E2.ENAME, E2.SAL
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E1.SAL < E2.SAL;
++--------+------+-------+------+
+| ENAME  | SAL  | ENAME | SAL  |
++--------+------+-------+------+
+| JAMES  |  950 | BLAKE | 2850 |
+| TURNER | 1500 | BLAKE | 2850 |
+| MARTIN | 1250 | BLAKE | 2850 |
+| WARD   | 1250 | BLAKE | 2850 |
+| ALLEN  | 1600 | BLAKE | 2850 |
+| MILLER | 1300 | CLARK | 2450 |
+| ADAMS  | 1100 | SCOTT | 3000 |
+| CLARK  | 2450 | KING  | 5000 |
+| BLAKE  | 2850 | KING  | 5000 |
+| JONES  | 2975 | KING  | 5000 |
+| SMITH  |  800 | FORD  | 3000 |
++--------+------+-------+------+
+11 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> #                                           ASSIGNMENT QUESTIONS
+mysql> 
+mysql> -- Q1
+mysql> 
+mysql> SELECT E1.ENAME, E2.ENAME
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E1.JOB = 'CLERK';
++--------+-------+
+| ENAME  | ENAME |
++--------+-------+
+| JAMES  | BLAKE |
+| MILLER | CLARK |
+| ADAMS  | SCOTT |
+| SMITH  | FORD  |
++--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q2
+mysql> 
+mysql> SELECT E1.ENAME, E2.JOB
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E2.DEPTNO IN (10, 20);
++--------+-----------+
+| ENAME  | JOB       |
++--------+-----------+
+| SMITH  | ANALYST   |
+| JONES  | PRESIDENT |
+| BLAKE  | PRESIDENT |
+| CLARK  | PRESIDENT |
+| SCOTT  | MANAGER   |
+| ADAMS  | ANALYST   |
+| FORD   | MANAGER   |
+| MILLER | MANAGER   |
++--------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q3
+mysql> 
+mysql> SELECT E1.ENAME, E2.SAL
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E1.SAL > 2300 AND E2.SAL > 2300;
++-------+------+
+| ENAME | SAL  |
++-------+------+
+| FORD  | 2975 |
+| SCOTT | 2975 |
+| CLARK | 5000 |
+| BLAKE | 5000 |
+| JONES | 5000 |
++-------+------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q4
+mysql> 
+mysql> SELECT E1.ENAME, E2.HIREDATE
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E2.HIREDATE > '1982-12-31';
+Empty set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q5
+mysql> 
+mysql> SELECT E1.ENAME, E2.COMM
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E1.JOB = 'SALESMAN' AND E2.DEPTNO IN (30);
++--------+------+
+| ENAME  | COMM |
++--------+------+
+| TURNER | NULL |
+| MARTIN | NULL |
+| WARD   | NULL |
+| ALLEN  | NULL |
++--------+------+
+4 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q6
+mysql> 
+mysql> SELECT E1.ENAME, E2.ENAME
+    -> ^C
+mysql> 
+mysql> 
+mysql> SELECT E1.ENAME, E1.SAL, E2.ENAME, E2.SAL
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E1.SAL > E2.SAL;
++-------+------+-------+------+
+| ENAME | SAL  | ENAME | SAL  |
++-------+------+-------+------+
+| FORD  | 3000 | JONES | 2975 |
+| SCOTT | 3000 | JONES | 2975 |
++-------+------+-------+------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q7
+mysql> 
+mysql> SELECT E1.ENAME, E1.HIREDATE, E2.ENAME, E2.HIREDATE
+    -> FROM E1.MGR = E2.EMPNO
+    -> ^C
+mysql> 
+mysql> 
+mysql> SELECT E1.ENAME, E1.HIREDATE, E2.ENAME, E2.HIREDATE
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E1.HIREDATE < E2.HIREDATE;
++--------+------------+-------+------------+
+| ENAME  | HIREDATE   | ENAME | HIREDATE   |
++--------+------------+-------+------------+
+| TURNER | 1980-09-08 | BLAKE | 1981-05-01 |
+| WARD   | 1981-02-22 | BLAKE | 1981-05-01 |
+| ALLEN  | 1981-02-20 | BLAKE | 1981-05-01 |
+| CLARK  | 1981-06-09 | KING  | 1981-11-17 |
+| BLAKE  | 1981-05-01 | KING  | 1981-11-17 |
+| JONES  | 1981-04-02 | KING  | 1981-11-17 |
+| SMITH  | 1980-12-17 | FORD  | 1981-12-03 |
++--------+------------+-------+------------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> SELECT E1.ENAME, E1.HIREDATE, E2.ENAME, E2.HIREDATE
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E1.HIREDATE > E2.HIREDATE;
++--------+------------+-------+------------+
+| ENAME  | HIREDATE   | ENAME | HIREDATE   |
++--------+------------+-------+------------+
+| FORD   | 1981-12-03 | JONES | 1981-04-02 |
+| SCOTT  | 1982-12-09 | JONES | 1981-04-02 |
+| JAMES  | 1981-12-03 | BLAKE | 1981-05-01 |
+| MARTIN | 1981-09-28 | BLAKE | 1981-05-01 |
+| MILLER | 1982-01-23 | CLARK | 1981-06-09 |
+| ADAMS  | 1983-01-12 | SCOTT | 1982-12-09 |
++--------+------------+-------+------------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q8
+mysql> 
+mysql> SELECT E1.ENAME, E2.ENAME
+    -> FROM E1.MGR = E2.EMPNO
+    -> ^C
+mysql> 
+mysql> 
+mysql> SELECT E1.ENAME, E2.ENAME
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E1.JOB = E2.JOB;
+Empty set (0.00 sec)
+
+mysql> 
+mysql> -- Q9
+mysql> 
+mysql> SELECT E1.ENAME, E2.ENAME
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E2.JOB = 'MANAGER';
++--------+-------+
+| ENAME  | ENAME |
++--------+-------+
+| ALLEN  | BLAKE |
+| WARD   | BLAKE |
+| MARTIN | BLAKE |
+| SCOTT  | JONES |
+| TURNER | BLAKE |
+| JAMES  | BLAKE |
+| FORD   | JONES |
+| MILLER | CLARK |
++--------+-------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q10
+mysql> 
+mysql> SELECT E1.ENAME, E1.SAL AS EMP_SAL, E2.ENAME, E2.SAL AS MANAGER_SAL
+    -> FROM 
+    -> ^C
+mysql> 
+mysql> 
+mysql> SELECT E1.ENAME, E1.SAL * 12 AS EMP_ANNUAL_SAL, E2.ENAME, E2.SAL * 12 AS MGR_ANNUAL_SAL
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E1.JOB IN (10, 20) AND E1.SAL < E2.SAL;
+Empty set, 14 warnings (0.00 sec)
+
+mysql> 
+mysql> SELECT E1.ENAME, E1.SAL * 12 AS EMP_ANNUAL_SAL, E2.ENAME, E2.SAL * 12 AS MGR_ANNUAL_SAL
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E1.DEPTNO IN (10, 20) AND E1.SAL < E2.SAL;
++--------+----------------+-------+----------------+
+| ENAME  | EMP_ANNUAL_SAL | ENAME | MGR_ANNUAL_SAL |
++--------+----------------+-------+----------------+
+| MILLER |          15600 | CLARK |          29400 |
+| ADAMS  |          13200 | SCOTT |          36000 |
+| CLARK  |          29400 | KING  |          60000 |
+| JONES  |          35700 | KING  |          60000 |
+| SMITH  |           9600 | FORD  |          36000 |
++--------+----------------+-------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q11
+mysql> 
+mysql> SELECT E1.ENAME, E2.JOB 
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO;
++--------+-----------+
+| ENAME  | JOB       |
++--------+-----------+
+| FORD   | MANAGER   |
+| SCOTT  | MANAGER   |
+| JAMES  | MANAGER   |
+| TURNER | MANAGER   |
+| MARTIN | MANAGER   |
+| WARD   | MANAGER   |
+| ALLEN  | MANAGER   |
+| MILLER | MANAGER   |
+| ADAMS  | ANALYST   |
+| CLARK  | PRESIDENT |
+| BLAKE  | PRESIDENT |
+| JONES  | PRESIDENT |
+| SMITH  | ANALYST   |
++--------+-----------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q12
+mysql> 
+mysql> SELECT E1.ENAME, E2.SAL
+    -> FROM EMP E1 JOIN EMP E2
+    -> ON E1.MGR = E2.EMPNO
+    -> WHERE E2.SAL LIKE '%50';
++--------+------+
+| ENAME  | SAL  |
++--------+------+
+| ALLEN  | 2850 |
+| WARD   | 2850 |
+| MARTIN | 2850 |
+| TURNER | 2850 |
+| JAMES  | 2850 |
+| MILLER | 2450 |
++--------+------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> NOTEE

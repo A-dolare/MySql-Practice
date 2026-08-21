@@ -12,7 +12,25 @@ FROM EMP E
 JOIN DEPT D
 ON E.DEPTNO = D.DEPTNO;
 
-(Output preserved from original file)
++--------+------------+
+| ENAME  | DNAME      |
++--------+------------+
+| SMITH  | RESEARCH   |
+| ALLEN  | SALES      |
+| WARD   | SALES      |
+| JONES  | RESEARCH   |
+| MARTIN | SALES      |
+| BLAKE  | SALES      |
+| CLARK  | ACCOUNTING |
+| SCOTT  | RESEARCH   |
+| KING   | ACCOUNTING |
+| TURNER | SALES      |
+| ADAMS  | RESEARCH   |
+| JAMES  | SALES      |
+| FORD   | RESEARCH   |
+| MILLER | ACCOUNTING |
++--------+------------+
+14 rows in set (0.00 sec)
 
 ------------------------------------------------------------
 
@@ -24,7 +42,14 @@ JOIN DEPT D
 ON E.DEPTNO = D.DEPTNO
 WHERE E.JOB = 'MANAGER';
 
-(Output preserved from original file)
++-------+----------+
+| ENAME | LOC      |
++-------+----------+
+| CLARK | NEW YORK |
+| JONES | DALLAS   |
+| BLAKE | CHICAGO  |
++-------+----------+
+3 rows in set (0.00 sec)
 
 ------------------------------------------------------------
 
@@ -59,6 +84,18 @@ ON E.DEPTNO = D.DEPTNO
 WHERE E.SAL > 2000
   AND D.LOC = 'NEW YORK';
 
++-------+--------+----------+
+| ENAME | DEPTNO | LOC      |
++-------+--------+----------+
+| JONES |     20 | DALLAS   |
+| BLAKE |     30 | CHICAGO  |
+| CLARK |     10 | NEW YORK |
+| SCOTT |     20 | DALLAS   |
+| KING  |     10 | NEW YORK |
+| FORD  |     20 | DALLAS   |
++-------+--------+----------+
+6 rows in set (0.00 sec)
+
 Original file was missing:
 AND D.LOC = 'NEW YORK'
 
@@ -73,7 +110,25 @@ FROM EMP E
 JOIN DEPT D
 ON E.DEPTNO = D.DEPTNO;
 
-CORRECT
++--------+----------+
+| ENAME  | LOC      |
++--------+----------+
+| SMITH  | DALLAS   |
+| ALLEN  | CHICAGO  |
+| WARD   | CHICAGO  |
+| JONES  | DALLAS   |
+| MARTIN | CHICAGO  |
+| BLAKE  | CHICAGO  |
+| CLARK  | NEW YORK |
+| SCOTT  | DALLAS   |
+| KING   | NEW YORK |
+| TURNER | CHICAGO  |
+| ADAMS  | DALLAS   |
+| JAMES  | CHICAGO  |
+| FORD   | DALLAS   |
+| MILLER | NEW YORK |
++--------+----------+
+14 rows in set (0.00 sec)
 
 ------------------------------------------------------------
 

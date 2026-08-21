@@ -1,0 +1,188 @@
+mysql> 
+mysql> 
+mysql> -- Q9
+mysql> 
+mysql> SELECT LENGTH('HELLLL') - LENGTH(REPLACE('HELLLL', 'L', ''))
+    -> ;
++-------------------------------------------------------+
+| LENGTH('HELLLL') - LENGTH(REPLACE('HELLLL', 'L', '')) |
++-------------------------------------------------------+
+|                                                     4 |
++-------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q10
+mysql> 
+mysql> SELECT ENAME, JOB
+    -> FROM EMP
+    -> WHERE ENAME LIKE '%MAN%';
+Empty set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> SELECT ENAME, JOB
+    -> FROM EMP
+    -> WHERE INSTR(JOB, 'MAN') > 0;
++--------+----------+
+| ENAME  | JOB      |
++--------+----------+
+| ALLEN  | SALESMAN |
+| WARD   | SALESMAN |
+| JONES  | MANAGER  |
+| MARTIN | SALESMAN |
+| BLAKE  | MANAGER  |
+| CLARK  | MANAGER  |
+| TURNER | SALESMAN |
++--------+----------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q11
+mysql> 
+mysql> -- REPEAT
+mysql> 
+mysql> -- Q12
+mysql> 
+mysql> -- REPEAT
+mysql> 
+mysql> -- Q13
+mysql> 
+mysql> SELECT LOWER(SUBSTR('QSPIDERS', 1, 3)) || UPPER(SUBSTR('QSPIDERS', 4))
+    -> FROM DUAL;
++-----------------------------------------------------------------+
+| LOWER(SUBSTR('QSPIDERS', 1, 3)) || UPPER(SUBSTR('QSPIDERS', 4)) |
++-----------------------------------------------------------------+
+|                                                               0 |
++-----------------------------------------------------------------+
+1 row in set, 3 warnings (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> SELECT CONCAT(LOWER(SUBSTR('QSPIDERS', 1, 3)), UPPER(SUBSTR('QSPIDERS', 4)))
+    -> FROM DUAL;
++-----------------------------------------------------------------------+
+| CONCAT(LOWER(SUBSTR('QSPIDERS', 1, 3)), UPPER(SUBSTR('QSPIDERS', 4))) |
++-----------------------------------------------------------------------+
+| qspIDERS                                                              |
++-----------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q14
+mysql> 
+mysql> SELECT CONCAT(ENAME, 'is a ', JOB, 'and gets ', SAL, ' salary')
+    -> FROM EMP;
++----------------------------------------------------------+
+| CONCAT(ENAME, 'is a ', JOB, 'and gets ', SAL, ' salary') |
++----------------------------------------------------------+
+| SMITHis a CLERKand gets 800 salary                       |
+| ALLENis a SALESMANand gets 1600 salary                   |
+| WARDis a SALESMANand gets 1250 salary                    |
+| JONESis a MANAGERand gets 2975 salary                    |
+| MARTINis a SALESMANand gets 1250 salary                  |
+| BLAKEis a MANAGERand gets 2850 salary                    |
+| CLARKis a MANAGERand gets 2450 salary                    |
+| SCOTTis a ANALYSTand gets 3000 salary                    |
+| KINGis a PRESIDENTand gets 5000 salary                   |
+| TURNERis a SALESMANand gets 1500 salary                  |
+| ADAMSis a CLERKand gets 1100 salary                      |
+| JAMESis a CLERKand gets 950 salary                       |
+| FORDis a ANALYSTand gets 3000 salary                     |
+| MILLERis a CLERKand gets 1300 salary                     |
++----------------------------------------------------------+
+14 rows in set (0.00 sec)
+
+mysql>  SELECT CONCAT(ENAME, 'is a ', JOB, ' and gets ', SAL, ' salary')
+    -> FROM DUAL;
+ERROR 1054 (42S22): Unknown column 'ENAME' in 'field list'
+mysql> 
+mysql> 
+mysql> SELECT CONCAT(ENAME, 'is a ', JOB, ' and gets ', SAL, ' salary')
+    -> FROM EMP;
++-----------------------------------------------------------+
+| CONCAT(ENAME, 'is a ', JOB, ' and gets ', SAL, ' salary') |
++-----------------------------------------------------------+
+| SMITHis a CLERK and gets 800 salary                       |
+| ALLENis a SALESMAN and gets 1600 salary                   |
+| WARDis a SALESMAN and gets 1250 salary                    |
+| JONESis a MANAGER and gets 2975 salary                    |
+| MARTINis a SALESMAN and gets 1250 salary                  |
+| BLAKEis a MANAGER and gets 2850 salary                    |
+| CLARKis a MANAGER and gets 2450 salary                    |
+| SCOTTis a ANALYST and gets 3000 salary                    |
+| KINGis a PRESIDENT and gets 5000 salary                   |
+| TURNERis a SALESMAN and gets 1500 salary                  |
+| ADAMSis a CLERK and gets 1100 salary                      |
+| JAMESis a CLERK and gets 950 salary                       |
+| FORDis a ANALYST and gets 3000 salary                     |
+| MILLERis a CLERK and gets 1300 salary                     |
++-----------------------------------------------------------+
+14 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q15
+mysql> 
+mysql> SELECT ENAME, HIREDATE
+    -> FROM EMP
+    -> WHERE DATE_FORMAT(HIREDATE, '%W');
+Empty set, 14 warnings (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> SELECT ENAME, HIREDATE
+    -> FROM EMP
+    -> WHERE DATE_FORMAT(HIREDATE, '%W') = 'WEDNESDAY';
++-------+------------+
+| ENAME | HIREDATE   |
++-------+------------+
+| SMITH | 1980-12-17 |
+| ADAMS | 1983-01-12 |
++-------+------------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q16
+mysql> 
+mysql> SELECT ENAME, HIREDATE
+    -> FROM EMP
+    -> WHERE MOD(DATE_FORMAT(HIREDATE, '%y'), 4) = 0;
++--------+------------+
+| ENAME  | HIREDATE   |
++--------+------------+
+| SMITH  | 1980-12-17 |
+| TURNER | 1980-09-08 |
++--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- 17
+mysql> 
+mysql> SELECT ENAME
+    -> FROM EMP 
+    -> WHERE DATE_FORMAT(HIREDATE, '%W') = 'SUNDAY' AND DATE_FORMAT(HIREDATE, '%M') = 'MAY';
+Empty set (0.00 sec)
+
+mysql> 
+mysql> -- VERIFICATION OF THE ANSEWER FOR QUERY 17
+mysql> 
+mysql> SELECT ENAME, HIREDATE, DATE_FORMAT(HIREDATE, '%W') AS DayName, DATE_FORMAT(HIREDATE, '%M') AS MonthName
+    -> FROM EMP
+    -> WHERE DATE_FORMAT(HIREDATE, '%M') = 'MAY';   
++-------+------------+---------+-----------+
+| ENAME | HIREDATE   | DayName | MonthName |
++-------+------------+---------+-----------+
+| BLAKE | 1981-05-01 | Friday  | May       |
++-------+------------+---------+-----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- NO ONE HIRED ON SUNDAY IN MONTH OF MAY
+mysql> 
+mysql> NOTEE
