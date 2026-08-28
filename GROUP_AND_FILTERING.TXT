@@ -1,0 +1,32 @@
+mysql> 
+mysql> -- Q1
+mysql> 
+mysql> SELECT COUNT(*), DEPTNO
+    -> FROM EMP
+    -> WHERE JOB != 'ANALYST'
+    -> GROUP BY JOB;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'abdulrahmandb.EMP.DEPTNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> SELECT COUNT(*), DEPTNO
+    -> FROM EMP
+    -> WHERE JOB NOT IN 'ANALYST'
+    -> GROUP BY DEPTNO;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''ANALYST'
+GROUP BY DEPTNO' at line 3
+mysql> 
+mysql> SELECT COUNT(*), DEPTNO
+    -> FROM EMP
+    -> WHERE JOB NOT IN ('ANALYST')
+    -> GROUP BY DEPTNO;
++----------+--------+
+| COUNT(*) | DEPTNO |
++----------+--------+
+|        3 |     20 |
+|        6 |     30 |
+|        3 |     10 |
++----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> NOTEE
