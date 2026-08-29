@@ -1,0 +1,33 @@
+mysql> 
+mysql> /*TYPES OF SUB - QUERY :
+   /*> 1. SINGLE ROW SUB QUERY
+   /*> 2. MULTI ROW SUB QUERY 
+   /*> */
+mysql> 
+mysql> # SINGLE ROW SUB QUERY
+mysql> 
+mysql> -- Q1
+mysql> 
+mysql> SELECT DNAME 
+    -> FROM DEPT
+    -> WHERE DEPTNO = (SELECT DEPTNO 
+    ->                 FROM EMP
+    ->                 WHERE ENAME = 'ALLEN');
++-------+
+| DNAME |
++-------+
+| SALES |
++-------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> # MULTIROW SUBQUERY
+mysql> 
+mysql> SELECT DNAME
+    -> FROM DEPT
+    -> WHERE DEPTNO = (SELECT DEPTNO
+    ->                 FROM EMP
+    -> ^C
+mysql> 
+mysql> 
+mysql> NOTEE 

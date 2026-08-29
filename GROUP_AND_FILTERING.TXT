@@ -4,19 +4,6 @@ mysql>
 mysql> SELECT COUNT(*), DEPTNO
     -> FROM EMP
     -> WHERE JOB != 'ANALYST'
-    -> GROUP BY JOB;
-ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'abdulrahmandb.EMP.DEPTNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
-mysql> 
-mysql> SELECT COUNT(*), DEPTNO
-    -> FROM EMP
-    -> WHERE JOB NOT IN 'ANALYST'
-    -> GROUP BY DEPTNO;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''ANALYST'
-GROUP BY DEPTNO' at line 3
-mysql> 
-mysql> SELECT COUNT(*), DEPTNO
-    -> FROM EMP
-    -> WHERE JOB NOT IN ('ANALYST')
     -> GROUP BY DEPTNO;
 +----------+--------+
 | COUNT(*) | DEPTNO |
@@ -28,5 +15,681 @@ mysql> SELECT COUNT(*), DEPTNO
 3 rows in set (0.00 sec)
 
 mysql> 
+mysql> -- Q2
+mysql> 
+mysql> SELECT MAX(SAL), JOB
+    -> FROM EMP
+    -> GROUP BY JOB;
++----------+-----------+
+| MAX(SAL) | JOB       |
++----------+-----------+
+|     1300 | CLERK     |
+|     1600 | SALESMAN  |
+|     2975 | MANAGER   |
+|     3000 | ANALYST   |
+|     5000 | PRESIDENT |
++----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q3
+mysql> 
+mysql> SELECT COUNT(*), JOB
+    -> FROM EMP
+    -> WHERE ENAME LIKE '%A%'
+    -> GROUP BY JOB;
++----------+----------+
+| COUNT(*) | JOB      |
++----------+----------+
+|        3 | SALESMAN |
+|        2 | MANAGER  |
+|        2 | CLERK    |
++----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q4
+mysql> 
+mysql> SELECT COUNT(*)
+    -> FROM EMP
+    -> WHERE COMM IS NOT NULL;
++----------+
+| COUNT(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*)
+    -> FROM EMP
+    -> WHERE COMM IS NOT NULL;
++----------+
+| COUNT(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> SELECT COUNT(*)
+    -> FROM EMP
+    -> WHERE COMM IS NOT NULL
+    -> GROUP BY DEPTNO;
++----------+
+| COUNT(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> SELECT COUNT(*), DEPTNO
+    -> FROM EMP
+    -> WHERE COMM IS NOT NULL;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'abdulrahmandb.EMP.DEPTNO'; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> 
+mysql> SELECT COUNT(*), DEPTNO
+    -> FROM EMP
+    -> WHERE COMM IS NOT NULL
+    -> GROUP BY DEPTNO;
++----------+--------+
+| COUNT(*) | DEPTNO |
++----------+--------+
+|        4 |     30 |
++----------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- METHOD 2
+mysql> 
+mysql> SELECT DEPTNO, COUNT(COMM)
+    -> FROM EMP
+    -> GROUP BY DEPTNO;
++--------+-------------+
+| DEPTNO | COUNT(COMM) |
++--------+-------------+
+|     20 |           0 |
+|     30 |           4 |
+|     10 |           0 |
++--------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> /*                                                                  ASSIGNMENT QUESTIONS ON GROUP BY                                                           */
+mysql> 
+mysql> -- Q1
+mysql> 
+mysql> SELECT COUNT(*), DEPTNO
+    -> FORM EMP
+    -> WHERE JOB != 'PRESIDENT'
+    -> GROUP BY DEPTNO;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'EMP
+WHERE JOB != 'PRESIDENT'
+GROUP BY DEPTNO' at line 2
+mysql> 
+mysql> SELECT COUNT(*), DEPTNO
+    -> FORM EMP
+    -> WHERE JOB NOT IN ('PRESIDENT')
+    -> GROUP BY DEPTNO;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'EMP
+WHERE JOB NOT IN ('PRESIDENT')
+GROUP BY DEPTNO' at line 2
+mysql> 
+mysql> 
+mysql> SELECT COUNT(*), DEPTNO
+    -> FROM EMP
+    -> WHERE JOB != 'PRESIDENT'
+    -> GROUP BY DEPTNO;
++----------+--------+
+| COUNT(*) | DEPTNO |
++----------+--------+
+|        5 |     20 |
+|        6 |     30 |
+|        2 |     10 |
++----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q2
+mysql> 
+mysql> SELECT ENAME, COUNT(*)
+    -> FROM EMP
+    -> ^C
+mysql> 
+mysql> 
+mysql> SELECT SUM(SAL), JOB
+    -> FROM EMP
+    -> GROUP BY JOB;
++----------+-----------+
+| SUM(SAL) | JOB       |
++----------+-----------+
+|     4150 | CLERK     |
+|     5600 | SALESMAN  |
+|     8275 | MANAGER   |
+|     6000 | ANALYST   |
+|     5000 | PRESIDENT |
++----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q3
+mysql> 
+mysql> SELECT COUNT(*), DEPTNO
+    -> FROM EMP
+    -> WHERE JOB = 'MANAGER'
+    -> GROUP BY DEPTNO;
++----------+--------+
+| COUNT(*) | DEPTNO |
++----------+--------+
+|        1 |     20 |
+|        1 |     30 |
+|        1 |     10 |
++----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q4
+mysql> 
+mysql> SELECT AVG(SAL), DEPTNO
+    -> FROM EMP
+    -> WHERE DEPTNO != 20
+    -> GROUP BY DEPTNO;
++-----------+--------+
+| AVG(SAL)  | DEPTNO |
++-----------+--------+
+| 1566.6667 |     30 |
+| 2916.6667 |     10 |
++-----------+--------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q5
+mysql> 
+mysql> SELECT COUNT(*), JOB
+    -> FROM EMP
+    -> WHERE ENAME LIKE '%A%'
+    -> GROUP BY JOB;
++----------+----------+
+| COUNT(*) | JOB      |
++----------+----------+
+|        3 | SALESMAN |
+|        2 | MANAGER  |
+|        2 | CLERK    |
++----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q6
+mysql> 
+mysql> SELECT COUNT(*), AVG(SAL), DEPTNO
+    -> FROM EMP
+    -> WHERE SAL > 2000
+    -> GROUP BY DEPTNO;
++----------+-----------+--------+
+| COUNT(*) | AVG(SAL)  | DEPTNO |
++----------+-----------+--------+
+|        3 | 2991.6667 |     20 |
+|        1 | 2850.0000 |     30 |
+|        2 | 3725.0000 |     10 |
++----------+-----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q7
+mysql> 
+mysql> SELECT SUM(SAL), COUNT(*)
+    -> FROM EMP
+    -> WHERE JOB = 'SALESMAN'
+    -> GROUP BY DEPTNO;
++----------+----------+
+| SUM(SAL) | COUNT(*) |
++----------+----------+
+|     5600 |        4 |
++----------+----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> SELECT SUM(SAL), COUNT(*), DEPTNO
+    -> FROM EMP
+    -> WHERE JOB = 'SALESMAN'
+    -> GROUP BY DEPTNO;
++----------+----------+--------+
+| SUM(SAL) | COUNT(*) | DEPTNO |
++----------+----------+--------+
+|     5600 |        4 |     30 |
++----------+----------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q8
+mysql> 
+mysql> SELECT COUNT(*), MAX(SAL), JOB
+    -> FROM EMP
+    -> GROUP BY JOB;
++----------+----------+-----------+
+| COUNT(*) | MAX(SAL) | JOB       |
++----------+----------+-----------+
+|        4 |     1300 | CLERK     |
+|        4 |     1600 | SALESMAN  |
+|        3 |     2975 | MANAGER   |
+|        2 |     3000 | ANALYST   |
+|        1 |     5000 | PRESIDENT |
++----------+----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q9
+mysql> 
+mysql> SELECT MAX(SAL), DEPTNO
+    -> FROM EMP
+    -> GROUP BY DEPTNO;
++----------+--------+
+| MAX(SAL) | DEPTNO |
++----------+--------+
+|     3000 |     20 |
+|     2850 |     30 |
+|     5000 |     10 |
++----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q10
+mysql> 
+mysql> SELECT COUNT(*)
+    -> FROM EMP
+    -> WHERE SAL IS NOT NULL;
++----------+
+| COUNT(*) |
++----------+
+|       14 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> SELECT COUNT(*)
+    -> FROM EMP
+    -> GROUP BY SAL;
++----------+
+| COUNT(*) |
++----------+
+|        1 |
+|        1 |
+|        2 |
+|        1 |
+|        1 |
+|        1 |
+|        2 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
++----------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*), SAL
+    -> FROM EMP
+    -> GROUP BY SAL;
++----------+------+
+| COUNT(*) | SAL  |
++----------+------+
+|        1 |  800 |
+|        1 | 1600 |
+|        2 | 1250 |
+|        1 | 2975 |
+|        1 | 2850 |
+|        1 | 2450 |
+|        2 | 3000 |
+|        1 | 5000 |
+|        1 | 1500 |
+|        1 | 1100 |
+|        1 |  950 |
+|        1 | 1300 |
++----------+------+
+12 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> /*                                                                    FILTERING: HAVING CLAUSE                                                                 */
+mysql> 
+mysql> -- Q1
+mysql> 
+mysql> SELECT JOB, COUNT(*)
+    -> FROM EMP
+    -> GROUP BY JOB
+    -> HAVING COUNT(*) > 1;
++----------+----------+
+| JOB      | COUNT(*) |
++----------+----------+
+| CLERK    |        4 |
+| SALESMAN |        4 |
+| MANAGER  |        3 |
+| ANALYST  |        2 |
++----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q2
+mysql> 
+mysql> SELECT ENAME, COUNT(*)
+    -> FROM EMP
+    -> GROUP BY ENAME
+    -> HAVING COUNT(*) > 1;
+Empty set (0.00 sec)
+
+mysql> 
+mysql> -- Q3
+mysql> 
+mysql> SELECT ENAME, COUNT(*)
+    -> FROM EMP
+    -> GROUP BY ENAME
+    -> HAVING COUNT(*) = 2;
+Empty set (0.00 sec)
+
+mysql> 
+mysql> -- Q4
+mysql> 
+mysql> SELECT COUNT(*), SAL
+    -> FROM EMP
+    -> GROUP BY SAL
+    -> HAVING COUNT(*) > 1;
++----------+------+
+| COUNT(*) | SAL  |
++----------+------+
+|        2 | 1250 |
+|        2 | 3000 |
++----------+------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q5
+mysql> 
+mysql> SELECT COUNT(*), ENAME, DEPTNO
+    -> FROM EMP
+    -> WHERE ENAME LIKE '%A%' OR ENAME LIKE '%S%'
+    -> GROUP BY DEPTNO
+    -> HAVING COUNT(*) > 1;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'abdulrahmandb.EMP.ENAME' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> SELECT COUNT(*), DEPTNO
+    -> FROM EMP
+    -> WHERE ENAME LIKE '%A%' OR ENAME LIKE '%S%'
+    -> GROUP BY DEPTNO
+    -> HAVING COUNT(*) > 1;
++----------+--------+
+| COUNT(*) | DEPTNO |
++----------+--------+
+|        4 |     20 |
+|        5 |     30 |
++----------+--------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q6
+mysql> 
+mysql> SELECT JOB, SUM(SAL)
+    -> FROM EMP
+    -> GROUP BY JOB
+    -> HAVING SUM(SAL) > 3450;
++-----------+----------+
+| JOB       | SUM(SAL) |
++-----------+----------+
+| CLERK     |     4150 |
+| SALESMAN  |     5600 |
+| MANAGER   |     8275 |
+| ANALYST   |     6000 |
+| PRESIDENT |     5000 |
++-----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q7
+mysql> 
+mysql> SELECT JOB, SUM(SAL)
+    -> FROM EMP
+    -> WHERE SAL > 1500
+    -> GROUP BY JOB;
++-----------+----------+
+| JOB       | SUM(SAL) |
++-----------+----------+
+| SALESMAN  |     1600 |
+| MANAGER   |     8275 |
+| ANALYST   |     6000 |
+| PRESIDENT |     5000 |
++-----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q8
+mysql> 
+mysql> SELECT SUM(SAL), JOB
+    -> FROM EMP
+    -> GROUP BY SAL
+    -> HAVING MAX(SAL) > 2000;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'abdulrahmandb.EMP.JOB' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> SELECT SUM(SAL), JOB
+    -> FROM EMP
+    -> GROUP BY JOB
+    -> HAVING MAX(SAL) > 2000;
++----------+-----------+
+| SUM(SAL) | JOB       |
++----------+-----------+
+|     8275 | MANAGER   |
+|     6000 | ANALYST   |
+|     5000 | PRESIDENT |
++----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> SELECT JOB, MAX(SAL)
+    -> FROM EMP
+    -> GROUP BY JOB
+    -> HAVING MAX(SAL) > 2000;
++-----------+----------+
+| JOB       | MAX(SAL) |
++-----------+----------+
+| MANAGER   |     2975 |
+| ANALYST   |     3000 |
+| PRESIDENT |     5000 |
++-----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q9
+mysql> 
+mysql> SELECT COUNT(*), JOB
+    -> FROM EMP
+    -> WHERE SAL > 1500
+    -> GROUP BY JOB
+    -> HAVING SUM(SAL) > 3800;
++----------+-----------+
+| COUNT(*) | JOB       |
++----------+-----------+
+|        3 | MANAGER   |
+|        2 | ANALYST   |
+|        1 | PRESIDENT |
++----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> /*                                                                  ASSIGNMENT QUESTIONS ON HAVING CLAUSE                                                     */
+mysql> 
+mysql> 
+mysql> -- Q1
+mysql> 
+mysql> SELECT DEPTNO, COUNT(*)
+    -> FROM EMP
+    -> WHERE JOB = 'CLERK'
+    -> GROUP BY DEPTNO
+    -> HAVING COUNT(*) > 1;
++--------+----------+
+| DEPTNO | COUNT(*) |
++--------+----------+
+|     20 |        2 |
++--------+----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q2
+mysql> 
+mysql> SELECT DEPTNO, SUM(SAL)
+    -> FROM EMP
+    -> GROUP BY DEPTNO
+    -> HAVING COUNT(*) > 3;
++--------+----------+
+| DEPTNO | SUM(SAL) |
++--------+----------+
+|     20 |    10875 |
+|     30 |     9400 |
++--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q3
+mysql> 
+mysql> SELECT COUNT(*), DEPTNO
+    -> FROM EMP
+    -> WHERE JOB = 'MANAGER'
+    -> GROUP BY DEPTNO;
++----------+--------+
+| COUNT(*) | DEPTNO |
++----------+--------+
+|        1 |     20 |
+|        1 |     30 |
+|        1 |     10 |
++----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q4
+mysql> 
+mysql> SELECT AVG(SAL), DEPTNO
+    -> FROM EMP
+    -> WHERE DEPTNO != 20
+    -> GROUP BY DEPTNO;
++-----------+--------+
+| AVG(SAL)  | DEPTNO |
++-----------+--------+
+| 1566.6667 |     30 |
+| 2916.6667 |     10 |
++-----------+--------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q5
+mysql> 
+mysql> SELECT COUNT(*), JOB
+    -> FROM EMP
+    -> WHERE ENAME LIKE '%A%'
+    -> GROUP BY JOB;
++----------+----------+
+| COUNT(*) | JOB      |
++----------+----------+
+|        3 | SALESMAN |
+|        2 | MANAGER  |
+|        2 | CLERK    |
++----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q6
+mysql> 
+mysql> SELECT COUNT(*), AVG(SAL)
+    -> FROM EMP
+    -> WHERE SAL > 2000
+    -> GROUP BY DEPTNO
+    -> ;
++----------+-----------+
+| COUNT(*) | AVG(SAL)  |
++----------+-----------+
+|        3 | 2991.6667 |
+|        1 | 2850.0000 |
+|        2 | 3725.0000 |
++----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q7
+mysql> 
+mysql> SELECT SUM(SAL), COUNT(*)
+    -> FROM EMP
+    -> WHERE JOB = 'SALESMAN' 
+    -> GROUP BY DEPTNO;
++----------+----------+
+| SUM(SAL) | COUNT(*) |
++----------+----------+
+|     5600 |        4 |
++----------+----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q8
+mysql> 
+mysql> SELECT COUNT(*), MAX(SAL)
+    -> FROM EMP
+    -> GROUP BY JOB;
++----------+----------+
+| COUNT(*) | MAX(SAL) |
++----------+----------+
+|        4 |     1300 |
+|        4 |     1600 |
+|        3 |     2975 |
+|        2 |     3000 |
+|        1 |     5000 |
++----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q9
+mysql> 
+mysql> SELECT MAX(SAL), DEPTNO
+    -> FROM EMP
+    -> GROUP BY DEPTNO;
++----------+--------+
+| MAX(SAL) | DEPTNO |
++----------+--------+
+|     3000 |     20 |
+|     2850 |     30 |
+|     5000 |     10 |
++----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q10
+mysql> 
+mysql> SELECT COUNT(*), SAL
+    -> FROM EMP
+    -> GROUP BY SAL;
++----------+------+
+| COUNT(*) | SAL  |
++----------+------+
+|        1 |  800 |
+|        1 | 1600 |
+|        2 | 1250 |
+|        1 | 2975 |
+|        1 | 2850 |
+|        1 | 2450 |
+|        2 | 3000 |
+|        1 | 5000 |
+|        1 | 1500 |
+|        1 | 1100 |
+|        1 |  950 |
+|        1 | 1300 |
++----------+------+
+12 rows in set (0.00 sec)
+
 mysql> 
 mysql> NOTEE
