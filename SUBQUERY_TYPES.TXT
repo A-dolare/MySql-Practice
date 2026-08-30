@@ -31,3 +31,417 @@ mysql> SELECT DNAME
 mysql> 
 mysql> 
 mysql> NOTEE 
+mysql> 
+mysql> select * from emp;
++-------+--------+-----------+------+------------+------+------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------+------------+------+------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250 |  500 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975 | NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000 | NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1980-09-08 | 1500 |    0 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100 | NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000 | NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300 | NULL |     10 |
++-------+--------+-----------+------+------------+------+------+--------+
+14 rows in set (0.00 sec)
+
+mysql> notee
+mysql> 
+mysql> 
+mysql> # MULTIROW SUBQUERY
+mysql> 
+mysql> /* We have to use only Special Operators to
+   /*> compare the values */
+mysql> 
+mysql> /*                                                                   Subquerry opertors                                                                       */
+mysql> 
+mysql> # 1. ALL OPERATOR:
+mysql> 
+mysql> -- EX
+mysql> 
+mysql> SELECT ENAME, SAL
+    -> FROM EMP
+    -> WHERE SAL > ALL (SELECT SAL
+    ->                 FROM EMP
+    ->                 WHERE DEPTNO = 10);
+Empty set (0.00 sec)
+
+mysql> 
+mysql> # 2. ANY OPERATOR: "It is special Op used along with a relational Op ( > , < , > = , <= )
+mysql> to compare the values present at the RHS ".
+    "> "
+    -> ^C
+mysql> 
+mysql> 
+mysql> -- EX
+mysql> 
+mysql> SELECT ENAME, SAL
+    -> FROM EMP
+    -> WHERE SAL > ANY (SELECT SAL
+    ->                 FROM EMP
+    ->                 WHERE DEPTNO = 10);
++--------+------+
+| ENAME  | SAL  |
++--------+------+
+| ALLEN  | 1600 |
+| JONES  | 2975 |
+| BLAKE  | 2850 |
+| CLARK  | 2450 |
+| SCOTT  | 3000 |
+| KING   | 5000 |
+| TURNER | 1500 |
+| FORD   | 3000 |
++--------+------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> # COMBINED EXAMPLE QUESTIONS FOR ALL AND ANY OPERATORS
+mysql> 
+mysql> -- Q1
+mysql> 
+mysql> SELECT ENAME
+    -> FROM EMP
+    -> WHERE SAL < ALL (SELECT SAL
+    ->                 FROM EMP
+    ->                 WHERE JOB = 'SALESMAN');
++-------+
+| ENAME |
++-------+
+| SMITH |
+| ADAMS |
+| JAMES |
++-------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q2
+mysql> 
+mysql> SELECT ENAME
+    -> FROM EMP
+    -> WHERE SAL < (SELECT SAL
+    ->             FROM EMP
+    -> ^C
+mysql> 
+mysql> SELECT ENAME
+    -> FROM EMP
+    -> WHERE SAL < ANY (SELECT SAL
+    ->                  FROM EMP
+    ->                  WHERE JOB = 'SALESMAN');
++--------+
+| ENAME  |
++--------+
+| SMITH  |
+| WARD   |
+| MARTIN |
+| TURNER |
+| ADAMS  |
+| JAMES  |
+| MILLER |
++--------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q3
+mysql> 
+mysql> SELECT ENAME
+    -> FROM EMP
+    -> WHERE SAL > (SELECT SAL
+    ->             FROM EMP
+    ->             WHERE ENAME = 'ADAMS');
++--------+
+| ENAME  |
++--------+
+| ALLEN  |
+| WARD   |
+| JONES  |
+| MARTIN |
+| BLAKE  |
+| CLARK  |
+| SCOTT  |
+| KING   |
+| TURNER |
+| FORD   |
+| MILLER |
++--------+
+11 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> SELECT ENAME
+    -> FROM EMP
+    -> WHERE SAL > ALL (SELECT SAL
+    ->             FROM EMP
+    ->             WHERE ENAME = 'ADAMS');
++--------+
+| ENAME  |
++--------+
+| ALLEN  |
+| WARD   |
+| JONES  |
+| MARTIN |
+| BLAKE  |
+| CLARK  |
+| SCOTT  |
+| KING   |
+| TURNER |
+| FORD   |
+| MILLER |
++--------+
+11 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> /*                                                                   ASSIGNMENT QUESTIONS ON SUBQUERY OPERATORS                                                */
+mysql> 
+mysql> 
+mysql> -- Q51
+mysql> 
+mysql> SELECT ENAME 
+    -> FROM EMP
+    -> WHERE SAL > ALL (SELECT SAL
+    ->                  FROM EMP
+    ->                  WHERE JOB = 'SALESMAN');
++-------+
+| ENAME |
++-------+
+| JONES |
+| BLAKE |
+| CLARK |
+| SCOTT |
+| KING  |
+| FORD  |
++-------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q52
+mysql> 
+mysql> SELECT E.*
+    -> FORM EMP E
+    -> WHERE E.HIREDATE > ALL (SELECT HIREDATE
+    ->                         FROM EMP
+    ->                         WHERE JOB = 'CLERK');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FORM EMP E
+WHERE E.HIREDATE > ALL (SELECT HIREDATE
+                        FROM ' at line 2
+mysql> 
+mysql> 
+mysql> SELECT E.*
+    -> FROM EMP E
+    -> WHERE E.HIREDATE > ALL (SELECT HIREDATE
+    ->                         FROM EMP
+    ->                         WHERE JOB = 'CLERK');
+Empty set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q53
+mysql> 
+mysql> SELECT ENAME, SAL
+    -> FROM EMP
+    -> WHERE SAL < ANY (SELECT SAL
+    ->                 FROM EMP 
+    ->                 WHERE JOB = 'MANAGER');
++--------+------+
+| ENAME  | SAL  |
++--------+------+
+| SMITH  |  800 |
+| ALLEN  | 1600 |
+| WARD   | 1250 |
+| MARTIN | 1250 |
+| BLAKE  | 2850 |
+| CLARK  | 2450 |
+| TURNER | 1500 |
+| ADAMS  | 1100 |
+| JAMES  |  950 |
+| MILLER | 1300 |
++--------+------+
+10 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q54
+mysql> 
+mysql> SELECT ENAME, HIREDATE
+    -> FROM EMP
+    -> WHERE HIREDATE < ALL (SELECT HIREDATE
+    ->                       FROM EMP
+    ->                       WHERE JOB = 'MANAGER');
++--------+------------+
+| ENAME  | HIREDATE   |
++--------+------------+
+| SMITH  | 1980-12-17 |
+| ALLEN  | 1981-02-20 |
+| WARD   | 1981-02-22 |
+| TURNER | 1980-09-08 |
++--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q55
+mysql> 
+mysql> SELECT ENAME
+    -> FROM EMP
+    -> WHERE HIREDATE > ALL (SELECT HIREDATE
+    ->                       FROM EMP
+    ->                       WHERE JOB = 'MANAGER')
+    -> AND        SAL > ALL (SELECT SAL
+    ->                      FROM EMP
+    ->                      WHERE JOB = 'CLERK');
++-------+
+| ENAME |
++-------+
+| SCOTT |
+| KING  |
+| FORD  |
++-------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q56
+mysql> 
+mysql> SELECT *
+    -> FROM EMP
+    -> WHERE JOB = 'CLERK' AND HIREDATE < ANY (SELECT HIREDATE
+    ->                                        FROM EMP
+    ->                                        WHERE JOB = 'SALESMAN');
++-------+-------+-------+------+------------+------+------+--------+
+| EMPNO | ENAME | JOB   | MGR  | HIREDATE   | SAL  | COMM | DEPTNO |
++-------+-------+-------+------+------------+------+------+--------+
+|  7369 | SMITH | CLERK | 7902 | 1980-12-17 |  800 | NULL |     20 |
++-------+-------+-------+------+------------+------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- 57
+mysql> 
+mysql> SELECT * 
+    -> FROM EMP
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                  FROM DEPT
+    ->                  WHERE DNAME = 'ACCOUNTING' OR DNAME = 'SALES');
++-------+--------+-----------+------+------------+------+------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------+------------+------+------+--------+
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250 |  500 |     30 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000 | NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1980-09-08 | 1500 |    0 |     30 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950 | NULL |     30 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300 | NULL |     10 |
++-------+--------+-----------+------+------------+------+------+--------+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q58
+mysql> 
+mysql> SELECT DNAME
+    -> FROM DEPT
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                 FROM EMP
+    ->                  WHERE ENAME IN ('MILLER', 'SMITH', 'KING');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5
+mysql> 
+mysql> 
+mysql> SELECT DNAME
+    -> FROM DEPT
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                 FROM EMP
+    ->                 WHERE ENAME IN ('MILLER', 'SMITH', 'KING'));   
++------------+
+| DNAME      |
++------------+
+| ACCOUNTING |
+| RESEARCH   |
++------------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q59
+mysql> 
+mysql> SELECT *
+    -> FROM EMP
+    -> WHERE DEPTNO IN ANY (SELECT DEPTNO
+    ->                     FROM DEPT
+    ->                     WHERE LOC IN ('CHICAGO', 'NEW YORK'));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ANY (SELECT DEPTNO
+                    FROM DEPT
+                    WHERE LOC I' at line 3
+mysql> 
+mysql> 
+mysql> SELECT *
+    -> FROM EMP
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                     FROM DEPT
+    ->                     WHERE LOC IN ('CHICAGO', 'NEW YORK'));
++-------+--------+-----------+------+------------+------+------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------+------------+------+------+--------+
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250 |  500 |     30 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000 | NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1980-09-08 | 1500 |    0 |     30 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950 | NULL |     30 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300 | NULL |     10 |
++-------+--------+-----------+------+------------+------+------+--------+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- METHOD 2:
+mysql> 
+mysql> SELECT *
+    -> FROM EMP
+    -> WHERE DEPTNO = ANY (SELECT DEPTNO
+    ->                     FROM DEPT
+    ->                     WHERE LOC IN ('CHICAGO', 'NEW YORK'));
++-------+--------+-----------+------+------------+------+------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------+------------+------+------+--------+
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250 |  500 |     30 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000 | NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1980-09-08 | 1500 |    0 |     30 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950 | NULL |     30 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300 | NULL |     10 |
++-------+--------+-----------+------+------------+------+------+--------+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Q60
+mysql> 
+mysql> SELECT ENAME
+    -> FROM EMP
+    -> WHERE HIREDATE > ALL (SELECT HIREDATE
+    ->                       FROM EMP
+    ->                      WHERE DEPTNO = 10);
++-------+
+| ENAME |
++-------+
+| SCOTT |
+| ADAMS |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> NOTEE

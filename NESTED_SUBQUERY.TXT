@@ -1,0 +1,419 @@
+mysql> 
+mysql> -- Q1
+mysql> 
+mysql> SELECT MAX(SAL)
+    -> FROM EMP;
++----------+
+| MAX(SAL) |
++----------+
+|     5000 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q2
+mysql> 
+mysql> SELECT MAX(SAL)
+    -> FROM EMP
+    -> WHERE SAL < (SELECT MAX(SAL)
+    ->             FROM EMP);
++----------+
+| MAX(SAL) |
++----------+
+|     3000 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> -- Q3
+mysql> 
+mysql> SELECT MAX(SAL)
+    -> FROM EMP
+    -> WHERE SAL < (SELECT MAX(SAL)
+    ->             FROM EMP
+    ->             WHERE SAL < (SELECT MAX(SAL)
+    ->                         FROM EMP));
++----------+
+| MAX(SAL) |
++----------+
+|     2975 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q4
+mysql> 
+mysql> SELECT MAX(SAL)
+    -> FROM EMP
+    -> WHERE SAL < (SELECT MAX(SAL)
+    ->             FROM EMP
+    ->             WHERE SAL < (SELECT MAX(SAL)
+    ->                         FROM EMP
+    ->                         WHERE SAL < (SELECT MAX(SAL)
+    ->                                     FROM EMP)));
++----------+
+| MAX(SAL) |
++----------+
+|     2850 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q5
+mysql> 
+mysql> SELECT MIN(SAL)
+    -> FROM EMP
+    -> WHERE SAL > (SELECT MIN(SAL)
+    ->             FROM EMP
+    ->             WHERE SAL > (SELECT MIN(SAL)
+    ->                          FROM EMP));
++----------+
+| MIN(SAL) |
++----------+
+|     1100 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q6
+mysql> 
+mysql> SELECT DNAME
+    -> FROM DEPT
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                 FROM EMP
+    ->                 WHERE SAL > (SELECT MIN(SAL)
+    ->                              FROM EMP));
++------------+
+| DNAME      |
++------------+
+| ACCOUNTING |
+| RESEARCH   |
+| SALES      |
++------------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT DNAME
+    -> FROM DEPT
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                 FROM EMP
+    ->                 WHERE SAL = (SELECT SAL
+    ->                             FROM EMP
+    ->                             WHERE SAL > (SELECT MIN(SAL)
+    ->                                         FROM EMP)));
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> 
+mysql> SELECT DNAME
+    -> FROM DEPT
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                 FROM EMP
+    ->                 WHERE SAL = (SELECT MIN(SAL)
+    ->                             FROM EMP
+    ->                             WHERE SAL > (SELECT MIN(SAL)
+    ->                                         FROM EMP)));
++-------+
+| DNAME |
++-------+
+| SALES |
++-------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> /*                                                           ASSIGNMENT QUESTIONS ON NESTED SUBQUERY                                                          */
+mysql> 
+mysql> -- Q1
+mysql> 
+mysql> SELECT MIN(SAL)
+    -> FROM EMP
+    -> WHERE SAL > (SELECT MIN(SAL)
+    ->              FROM EMP));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4
+mysql> 
+mysql> SELECT MIN(SAL)
+    -> FROM EMP
+    -> WHERE SAL > (SELECT MIN(SAL)
+    ->              FROM EMP);
++----------+
+| MIN(SAL) |
++----------+
+|      950 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q2
+mysql> 
+mysql> SELECT MAX(SAL)
+    -> FROM EMP
+    -> WHERE SAL < (SELECT MAX(SAL)
+    ->              FROM EMP
+    ->             WHERE SAL < (SELECT MAX(SAL)
+    ->                          FROM EMP
+    ->                          WHERE SAL < (SELECT MAX(SAL)
+    ->                                       FROM EMP
+    ->                                       WHERE SAL < (SELECT MAX(SAL)
+    ->                                                   FROM EMP))));
++----------+
+| MAX(SAL) |
++----------+
+|     2450 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q63
+mysql> 
+mysql> SELECT ENAME
+    -> FROM EMP
+    -> WHERE SAL = (SELECT MAX(SAL)
+    ->              FROM EMP
+    ->              WHERE SAL < (SELECT MAX(SAL)
+    ->                          FROM EMP
+    ->                          WHERE SAL < (SELECT MAX(SAL)
+    ->                                       FROM EMP)));
++-------+
+| ENAME |
++-------+
+| JONES |
++-------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q64
+mysql> 
+mysql> SELECT EMPNO
+    -> FROM EMP
+    -> WHERE SAL = (SELECT MAX(SAL)
+    ->               FROM EMP
+    ->              WHERE SAL < (SELECT MAX(SAL)
+    ->                          FROM EMP
+    ->                          WHERE SAL < (SELECT MAX(SAL)
+    ->                                      FROM EMP)));
++-------+
+| EMPNO |
++-------+
+|  7566 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q65
+mysql> 
+mysql> SELECT DNAME
+    -> FROM DEPT
+    -> WHERE SAL = (SELECT MAX(SAL)
+    ->             FROM EMP
+    ->             WHERE SAL < (SELECT MAX(SAL)
+    ->                         FROM EMP
+    ->                          WHERE SAL < (SELECT MAX(SAL)
+    ->                                      FROM EMP
+    ->                                      WHERE SAL < (SELECT MAX(SAL) 
+    ->                                                   FROM EMP))));
+ERROR 1054 (42S22): Unknown column 'SAL' in 'where clause'
+mysql> 
+mysql> SELECT DNAME 
+    -> FROM DEPT 
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                 FROM EMP
+    ->                 WHERE SAL = (SELECT MAX(SAL)
+    ->                             FROM EMP
+    ->                             WHERE SAL < (SELECT MAX(SAL)
+    ->                                          FROM EMP
+    ->                                          WHERE SAL < (SELECT MAX(SAL)
+    ->                                                       FROM EMP
+    ->                                                       WHERE SAL < (SELECT MAX(SAL)
+    ->                                                                    FROM EMP))));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 12
+mysql> SELECT DNAME 
+    -> FROM DEPT 
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                 FROM EMP
+    ->                 WHERE SAL = (SELECT MAX(SAL)
+    ->                             FROM EMP
+    ->                             WHERE SAL < (SELECT MAX(SAL)
+    -> 
+    ->                                          FROM EMP
+    -> 
+    -> ^C
+mysql> 
+mysql> 
+mysql> 
+mysql> SELECT DNAME
+    -> FROM DEPT
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                 FROM EMP
+    ->                 WHERE SAL = (SELECT MAX(SAL)
+    ->                             FROM EMP
+    ->                             WHERE SAL < (SELECT MAX(SAL)
+    ->                                          FROM EMP
+    ->                                          WHERE SAL < (SELECT MAX(SAL)
+    ->                                                       FROM EMP
+    ->                                                       WHERE SAL < (SELECT MAX(SAL)
+    ->                                                                    FROM EMP))))));   
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 12
+mysql> 
+mysql> 
+mysql> SELECT DNAME
+    -> FROM DEPT
+    -> WHERE DEPTNO IN (
+    ->     SELECT DEPTNO
+    ->     FROM EMP
+    ->     WHERE SAL = (
+    ->         SELECT MAX(SAL)
+    ->         FROM EMP
+    ->         WHERE SAL < (
+    ->             SELECT MAX(SAL)
+    ->             FROM EMP
+    ->             WHERE SAL < (
+    ->                 SELECT MAX(SAL)
+    ->                 FROM EMP
+    ->                 WHERE SAL < (
+    ->                     SELECT MAX(SAL)
+    ->                     FROM EMP
+    ->                 )
+    ->             )
+    ->         )
+    ->     )
+    -> );   
++-------+
+| DNAME |
++-------+
+| SALES |
++-------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> -- Q66
+mysql> 
+mysql> SELECT *
+    -> FROM EMP
+    -> WHERE HIREDATE = (SELECT MIN(HIREDATE)
+    ->                  FROM EMP
+    ->                  WHERE HIREDATE < (SELECT MIN(HIREDATE)
+    ->                                    FROM EMP));
+Empty set (0.00 sec)
+
+mysql> 
+mysql> SELECT *
+    -> FROM EMP
+    -> WHERE HIREDATE = (SELECT MIN(HIREDATE)
+    ->                  FROM EMP
+    ->                  WHERE HIREDATE > (SELECT MIN(HIREDATE)
+    ->                                   FROM EMP));
++-------+-------+-------+------+------------+------+------+--------+
+| EMPNO | ENAME | JOB   | MGR  | HIREDATE   | SAL  | COMM | DEPTNO |
++-------+-------+-------+------+------------+------+------+--------+
+|  7369 | SMITH | CLERK | 7902 | 1980-12-17 |  800 | NULL |     20 |
++-------+-------+-------+------+------------+------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q67
+mysql> 
+mysql> SELECT ENAME
+    -> FROM EMP
+    -> WHERE HIREDATE = (SELECT MAX(HIREDATE)
+    ->                   FROM EMP
+    ->                   WHERE HIREDATE < (SELECT MAX(HIREDATE)
+    ->                                     FROM EMP));
++-------+
+| ENAME |
++-------+
+| SCOTT |
++-------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q68
+mysql> 
+mysql> SELECT LOC
+    -> FROM DEPT
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                 FROM EMP
+    ->                 WHERE HIREDATE = (SELECT MIN(HIREDATE)
+    ->                                   FROM EMP));
++---------+
+| LOC     |
++---------+
+| CHICAGO |
++---------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- Q69
+mysql> 
+mysql> SELECT *
+    -> FROM EMP
+    -> WHERE SAL = (SELECT MIN(SAL)
+    ->              FROM EMP
+    ->              WHERE SAL > (SELECT MIN(SAL)
+    ->                           FROM EMP
+    ->                           WHERE SAL > (SELECT MIN(SAL)
+    ->                                        FROM EMP
+    ->                                        WHERE SAL > (SELECT MIN(SAL)
+    ->                                                     FROM EMP
+    ->                                                     WHERE SAL > (SELECT MIN(SAL)
+    ->                                                                  FROM EMP
+    ->                                                                  WHERE SAL > (SELECT MIN(SAL)
+    ->                                                                               FROM EMP)))))));   
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 14
+mysql>                                    
+mysql> 
+mysql> SELECT *
+    -> FROM EMP
+    -> WHERE SAL = (SELECT MIN(SAL)
+    ->              FROM EMP
+    ->              WHERE SAL > (SELECT MIN(SAL)
+    ->                           FROM EMP
+    ->                           WHERE SAL > (SELECT MIN(SAL)
+    ->                                        FROM EMP
+    ->                                        WHERE SAL > (SELECT MIN(SAL)
+    ->                                                     FROM EMP
+    ->                                                     WHERE SAL > (SELECT MIN(SAL)
+    ->                                                                  FROM EMP
+    ->                                                                  WHERE SAL > (SELECT MIN(SAL)
+    ->                                                                               FROM EMP))))));
++-------+--------+----------+------+------------+------+------+--------+
+| EMPNO | ENAME  | JOB      | MGR  | HIREDATE   | SAL  | COMM | DEPTNO |
++-------+--------+----------+------+------------+------+------+--------+
+|  7844 | TURNER | SALESMAN | 7698 | 1980-09-08 | 1500 |    0 |     30 |
++-------+--------+----------+------+------------+------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> -- 70
+mysql> 
+mysql> SELECT DNAME
+    -> FROM EMP
+    -> ^C
+mysql> 
+mysql> 
+mysql> SELECT DNAME
+    -> FROM DEPT
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                  FROM EMP 
+    ->                  WHERE HIREDATE = (SELECT MAX(SAL)
+    ->                                   FROM EMP
+    ->                                   WHERE SAL < (SELECT MAX(SAL)
+    ->                                               FROM EMP)));
+Empty set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> SELECT DNAME
+    -> FROM DEPT
+    -> WHERE DEPTNO IN (SELECT DEPTNO
+    ->                  FROM EMP 
+    ->                  WHERE SAL = (SELECT MAX(SAL)
+    ->                                   FROM EMP
+    ->                                   WHERE SAL < (SELECT MAX(SAL)
+    ->                                               FROM EMP)));
++----------+
+| DNAME    |
++----------+
+| RESEARCH |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> NOTEE
