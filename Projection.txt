@@ -262,10 +262,10 @@ mysql>
 mysql> 
 mysql> -- Q8
 mysql> 
-mysql> SELECT ENAME, SAL * 12 AS ANNUAL_SAL
+mysql> SELECT ENAME, SAL * 12
     -> FROM EMP;
 +--------+------------+
-| ENAME  | ANNUAL_SAL |
+| ENAME  | SAL * 12   |
 +--------+------------+
 | SMITH  |       9600 |
 | ALLEN  |      19200 |
@@ -423,10 +423,10 @@ mysql> SELECT ENAME, SAL
 mysql> 
 mysql> -- Q2
 mysql> 
-mysql> SELECT ENAME, SAL * 12 AS ANNUAL_SAL
+mysql> SELECT ENAME, SAL * 12 
     -> FROM EMP;
 +--------+------------+
-| ENAME  | ANNUAL_SAL |
+| ENAME  | SAL * 12   |
 +--------+------------+
 | SMITH  |       9600 |
 | ALLEN  |      19200 |
@@ -449,10 +449,10 @@ mysql>
 mysql> 
 mysql> -- Q3
 mysql> 
-mysql> SELECT EMP.*, SAL * 12 AS ANNUAL_SAL
+mysql> SELECT EMP.*, SAL * 12 
     -> FROM EMP;
 +-------+--------+-----------+------+------------+------+------+--------+------------+
-| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL  | COMM | DEPTNO | ANNUAL_SAL |
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL  | COMM | DEPTNO | SAL * 12   |
 +-------+--------+-----------+------+------------+------+------+--------+------------+
 |  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800 | NULL |     20 |       9600 |
 |  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600 |  300 |     30 |      19200 |
@@ -474,16 +474,16 @@ mysql> SELECT EMP.*, SAL * 12 AS ANNUAL_SAL
 mysql> 
 mysql> -- Q4
 mysql> 
-mysql> SELECT ENAME, SAL * 1.2 AS SAL_WITH_20%_HIKE
+mysql> SELECT ENAME, SAL * 1.2 
     -> FROM EMP;
 ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%_HIKE
 FROM EMP' at line 1
 mysql> 
 mysql> 
-mysql> SELECT ENAME, SAL * 1.2 AS HIKED_SAL
+mysql> SELECT ENAME, SAL * 1.2
     -> FROM EMP;
 +--------+-----------+
-| ENAME  | HIKED_SAL |
+| ENAME  | SAL * 1.2 |
 +--------+-----------+
 | SMITH  |     960.0 |
 | ALLEN  |    1920.0 |
@@ -506,10 +506,10 @@ mysql>
 mysql> 
 mysql> -- Q5
 mysql> 
-mysql> SELECT ENAME, SAL * 0.9 AS REDUCED_SAL
+mysql> SELECT ENAME, SAL * 0.9 
     -> FROM EMP;
 +--------+-------------+
-| ENAME  | REDUCED_SAL |
+| ENAME  | SAL * 0.9   |
 +--------+-------------+
 | SMITH  |       720.0 |
 | ALLEN  |      1440.0 |
