@@ -13,8 +13,7 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 - 📚 200-300 topic-wise SQL practice questions
 - 🏗️ Designed for absolute beginners
 - 📝 Correct SQL query for every question
-- 📊 Expected output table included
-<!-- - 💡 Explanation for every solution -->
+- 📊 Expected output table included <!-- - 💡 Explanation for every solution -->
 - 🔄 Uses ANSI SQL syntax wherever possible
 - 🐬 Primarily tested on MySQL
 - 🗄️ Standard SCOTT Schema for consistency
@@ -29,6 +28,7 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 ├── Projection
 │   ├── 01_Select_Clause.sql
 │   └── 02_Distinct-Expression-Alias.sql
+|   └── 03_Where_Clause.sql
 │
 ├── db
 │   └── scott.sql
@@ -67,17 +67,12 @@ Refer the Readme.md in db folder.
 - [x] Expressions
 - [x] Aliases
 
+- [x] WHERE Clause
+
 ---
 
 ## 🚧 Currently In Progress
 
-- [ ] WHERE Clause
-
----
-
-## 📌 Planned Topics
-
-### Selection (Filtering)
 - [ ] Relational Operators
   - [ ] =
   - [ ] != / <>
@@ -85,6 +80,13 @@ Refer the Readme.md in db folder.
   - [ ] <
   - [ ] >=
   - [ ] <=
+
+---
+
+## 📌 Planned Topics
+
+### Selection (Filtering)
+
 - [ ] Logical Operators
   - [ ] AND
   - [ ] OR
