@@ -29,6 +29,11 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 │   ├── 01_Select_Clause.sql
 │   └── 02_Distinct-Expression-Alias.sql
 |   └── 03_Where_Clause.sql
+|   └── 04_Concatination-operators
+|   └── 05_Logical-operators
+|       └── AND operator
+|       └── OR operator
+|       └── NOT operator
 │
 ├── db
 │   └── scott.sql
@@ -64,33 +69,22 @@ Refer the Readme.md in db folder.
 
 - [x] SELECT Clause
 - [x] DISTINCT Clause
-- [x] Expressions
-- [x] Aliases
+  - [x] Expressions
+  - [x] Aliases
 
 - [x] WHERE Clause
+
+- [x] Concatenation Operator (||)
+
+- [x] Logical Operators
+  - [x] AND
+  - [x] OR
+  - [x] NOT
 
 ---
 
 ## 🚧 Currently In Progress
 
-- [ ] Relational Operators
-  - [ ] =
-  - [ ] != / <>
-  - [ ] >
-  - [ ] <
-  - [ ] >=
-  - [ ] <=
-
----
-
-## 📌 Planned Topics
-
-### Selection (Filtering)
-
-- [ ] Logical Operators
-  - [ ] AND
-  - [ ] OR
-  - [ ] NOT
 - [ ] Special Operators
   - [ ] IN
   - [ ] NOT IN
@@ -100,12 +94,27 @@ Refer the Readme.md in db folder.
   - [ ] IS NOT NULL
   - [ ] LIKE
   - [ ] NOT LIKE
+
+---
+
+## 📌 Planned Topics
+
+### Selection (Filtering)
+
+- [ ] Relational Operators
+  - [ ] =
+  - [ ] != / <>
+  - [ ] >
+  - [ ] <
+  - [ ] >=
+  - [ ] <=
+
 - [ ] Subquery Operators
   - [ ] ALL
   - [ ] ANY
   - [ ] EXISTS
   - [ ] NOT EXISTS
-- [ ] Concatenation Operator (||)
+
 
 ### Multi Row Functions (Aggregate Functions)
 - [ ] MAX()
