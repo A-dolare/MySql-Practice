@@ -27,13 +27,33 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 .
 ├── Projection
 │   ├── 01_Select_Clause.sql
-│   └── 02_Distinct-Expression-Alias.sql
-|   └── 03_Where_Clause.sql
-|   └── 04_Concatination-operators
-|   └── 05_Logical-operators
-|       └── AND operator
-|       └── OR operator
-|       └── NOT operator
+│   └── 02_Distinct_Expression_Alias.sql
+│
+├── Selection
+│   ├── 03_Where_Clause.sql
+│   ├── 04_Concatenation_Operators.sql
+│   ├── 05_Relational_Operators.sql
+│   │   ├── = Operator
+│   │   ├── > Operator
+│   │   ├── < Operator
+│   │   ├── >= Operator
+│   │   ├── <= Operator
+│   │   └── <> / != Operator
+│   │
+│   ├── 06_Logical_Operators.sql
+│   │   ├── AND Operator
+│   │   ├── OR Operator
+│   │   └── NOT Operator
+│   │
+│   └── 07_Special_Operators.sql
+│       ├── IN Operator
+│       ├── NOT IN Operator
+│       ├── BETWEEN Operator
+│       ├── NOT BETWEEN Operator
+│       ├── IS NULL Operator
+│       ├── IS NOT NULL Operator
+│       ├── LIKE Operator
+│       └── NOT LIKE Operator
 │
 ├── db
 │   └── scott.sql
@@ -76,45 +96,32 @@ Refer the Readme.md in db folder.
 
 - [x] Concatenation Operator (||)
 
+- [x] Relational Operators
+  - [x] =
+  - [x] != / <>
+  - [x] >
+  - [x] <
+  - [x] >=
+  - [x] <=
+
 - [x] Logical Operators
   - [x] AND
   - [x] OR
   - [x] NOT
 
+- [x] Special Operators
+  - [x] IN
+  - [x] NOT IN
+  - [x] BETWEEN
+  - [x] NOT BETWEEN
+  - [x] IS NULL
+  - [x] IS NOT NULL
+  - [x] LIKE
+  - [x] NOT LIKE
+
 ---
 
 ## 🚧 Currently In Progress
-
-- [ ] Special Operators
-  - [ ] IN
-  - [ ] NOT IN
-  - [ ] BETWEEN
-  - [ ] NOT BETWEEN
-  - [ ] IS NULL
-  - [ ] IS NOT NULL
-  - [ ] LIKE
-  - [ ] NOT LIKE
-
----
-
-## 📌 Planned Topics
-
-### Selection (Filtering)
-
-- [ ] Relational Operators
-  - [ ] =
-  - [ ] != / <>
-  - [ ] >
-  - [ ] <
-  - [ ] >=
-  - [ ] <=
-
-- [ ] Subquery Operators
-  - [ ] ALL
-  - [ ] ANY
-  - [ ] EXISTS
-  - [ ] NOT EXISTS
-
 
 ### Multi Row Functions (Aggregate Functions)
 - [ ] MAX()
@@ -122,6 +129,18 @@ Refer the Readme.md in db folder.
 - [ ] SUM()
 - [ ] AVG()
 - [ ] COUNT()
+
+---
+
+## 📌 Planned Topics
+
+### Selection (Filtering)
+
+- [ ] Subquery Operators
+  - [ ] ALL
+  - [ ] ANY
+  - [ ] EXISTS
+  - [ ] NOT EXISTS
 
 ### GROUP BY
 - [ ] GROUP BY Clause
