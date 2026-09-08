@@ -54,6 +54,15 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 │       ├── IS NOT NULL Operator
 │       ├── LIKE Operator
 │       └── NOT LIKE Operator
+|
+├── Functions
+│   ├── 08_Multi_Row_Functions.sql
+│       ├── MAX()
+│       ├── MIN()
+│       ├── SUM()
+│       ├── AVG()
+│       └── COUNT()
+│   
 │
 ├── db
 │   └── scott.sql
@@ -87,6 +96,8 @@ Refer the Readme.md in db folder.
 
 ## ✅ Completed
 
+### Selection (Filtering)
+
 - [x] SELECT Clause
 - [x] DISTINCT Clause
   - [x] Expressions
@@ -119,16 +130,20 @@ Refer the Readme.md in db folder.
   - [x] LIKE
   - [x] NOT LIKE
 
+### Multi Row Functions (Aggregate Functions)
+- [x] MAX()
+- [x] MIN()
+- [x] SUM()
+- [x] AVG()
+- [x] COUNT()
+
 ---
 
 ## 🚧 Currently In Progress
 
-### Multi Row Functions (Aggregate Functions)
-- [ ] MAX()
-- [ ] MIN()
-- [ ] SUM()
-- [ ] AVG()
-- [ ] COUNT()
+### GROUP BY
+- [ ] GROUP BY Clause
+- [ ] Aggregate Queries with GROUP BY
 
 ---
 
@@ -141,10 +156,6 @@ Refer the Readme.md in db folder.
   - [ ] ANY
   - [ ] EXISTS
   - [ ] NOT EXISTS
-
-### GROUP BY
-- [ ] GROUP BY Clause
-- [ ] Aggregate Queries with GROUP BY
 
 ### HAVING
 - [ ] HAVING Clause
