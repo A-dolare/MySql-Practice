@@ -62,7 +62,10 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 │       ├── SUM()
 │       ├── AVG()
 │       └── COUNT()
-│   
+│
+├── Group and Filtering
+│   ├── 09_GroupBY_Clause.sql
+│   ├── 10_Having_Clause.sql
 │
 ├── db
 │   └── scott.sql
@@ -137,13 +140,23 @@ Refer the Readme.md in db folder.
 - [x] AVG()
 - [x] COUNT()
 
+### GROUP BY
+- [x] GROUP BY Clause
+- [x] Aggregate Queries with GROUP BY
+
+### HAVING
+- [x] HAVING Clause
+- [x] Group Filtering
+- [x] GROUP BY + HAVING
+
 ---
 
 ## 🚧 Currently In Progress
 
-### GROUP BY
-- [ ] GROUP BY Clause
-- [ ] Aggregate Queries with GROUP BY
+### Subqueries
+- [ ] Single Row Subqueries
+- [ ] Multi Row Subqueries
+- [ ] Nested Subqueries
 
 ---
 
@@ -156,16 +169,6 @@ Refer the Readme.md in db folder.
   - [ ] ANY
   - [ ] EXISTS
   - [ ] NOT EXISTS
-
-### HAVING
-- [ ] HAVING Clause
-- [ ] Group Filtering
-- [ ] GROUP BY + HAVING
-
-### Subqueries
-- [ ] Single Row Subqueries
-- [ ] Multi Row Subqueries
-- [ ] Nested Subqueries
 
 ### Joins
 - [ ] Cartesian Join / Cross Join
