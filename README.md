@@ -66,6 +66,10 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 ├── Group and Filtering
 │   ├── 09_GroupBY_Clause.sql
 │   ├── 10_Having_Clause.sql
+|
+├── Subquerry
+│   ├── 11_Subquerry_Case1.sql
+│   
 │
 ├── db
 │   └── scott.sql
