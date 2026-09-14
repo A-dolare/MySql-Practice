@@ -69,6 +69,8 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 |
 ├── Subquerry
 │   ├── 11_Subquerry_Case1.sql
+│   ├── 12_Subquerry_Case2.sql
+│   ├── 13_Subquerry_Case1_&_Case2.sql
 │   
 │
 ├── db
@@ -152,12 +154,16 @@ Refer the Readme.md in db folder.
 - [x] HAVING Clause
 - [x] Group Filtering
 - [x] GROUP BY + HAVING
+  
+### Subqueries 1
+- [x] Subqueries Case 1
+- [x] Subqueries Case 2
 
 ---
 
 ## 🚧 Currently In Progress
 
-### Subqueries
+### Subqueries 2
 - [ ] Single Row Subqueries
 - [ ] Multi Row Subqueries
 - [ ] Nested Subqueries
