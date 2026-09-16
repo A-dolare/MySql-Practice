@@ -71,7 +71,7 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 │   ├── 11_Subquerry_Case1.sql
 │   ├── 12_Subquerry_Case2.sql
 │   ├── 13_Subquerry_Case1_&_Case2.sql
-│   
+│   ├── 14_Subquerry_Types.sql
 │
 ├── db
 │   └── scott.sql
