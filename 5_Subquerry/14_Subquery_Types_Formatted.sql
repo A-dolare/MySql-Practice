@@ -20,7 +20,7 @@ WHERE ENAME = 'ALLEN');
 +-------+
 
 # MULTIROW SUBQUERY - If the sub query returns more than1 record / value we call it
--- as Multi Row Sub Query .
+# as Multi Row Sub Query .
 
 # Q1 WAQTD ename and salary of the employees earning more than
 # Employees of dept 10 .
@@ -30,7 +30,8 @@ FROM EMP
 WHERE SAL > (SELECT SAL
 FROM EMP
 WHERE DEPTNO = 10);
-ERROR 1242 (21000): Subquery returns more than 1 row
+-- ERROR 1242 (21000): Subquery returns more than 1 row
+
 /* Here we cannot use > symbol to compare
 Multiple values .
 We cant use IN or. NOT IN as well because
@@ -39,6 +40,7 @@ Therefore we have to use Sub Query Operators
 For Comparing Relational Operators such as
 ( > , < , >= , <= ) .
 */
+
 # CORRECTED QUERY
 SELECT ENAME, SAL
 FROM EMP
