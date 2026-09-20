@@ -72,10 +72,12 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 │   ├── 12_Subquerry_Case2.sql
 │   ├── 13_Subquerry_Case1_&_Case2.sql
 │   ├── 14_Subquerry_Types.sql
+│   ├── 15_Emp-Mgr-Relation(BONUS).sql
 │
 ├── Joins
-│   ├── 15_15_Emp-Mgr-Relation(BONUS).sql
-│   ├── 16_16_Cross-&-Inner_joins.sql
+│   ├── 16_Cross-&-Inner_joins.sql
+│   ├── 17_Outer_joins.sql
+│   ├── 18_Self_joins.sql
 |
 ├── db
 │   └── scott.sql
