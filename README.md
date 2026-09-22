@@ -57,9 +57,8 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 |
 ├── Functions
 │   ├── 08_Multi_Row_Functions.sql
-│       ├── MAX()
-│       ├── MIN()
-│       ├── SUM()
+
+
 │       ├── AVG()
 │       └── COUNT()
 │
@@ -77,6 +76,9 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 ├── Joins
 │   ├── 16_Cross-&-Inner_joins.sql
 │   ├── 17_Outer_joins.sql
+│       ├── Left_Outer_join
+│       ├── Right_Outer_join
+│       ├── Full_Outer_join
 │   ├── 18_Self_joins.sql
 |
 ├── db
