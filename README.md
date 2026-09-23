@@ -80,6 +80,7 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 │       ├── Right_Outer_join
 │       ├── Full_Outer_join
 │   ├── 18_Self_joins.sql
+│   ├── 19_Natural_joins.sql
 |
 ├── db
 │   └── scott.sql

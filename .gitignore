@@ -6,7 +6,7 @@ Distinct-Expression-Alias.sql
 Select_Clause.sql
 
 # Joins
-19_Natural_join.sql
+20_Correlated_subquery.sql
 21_Single_Row_Functions.sql
 
 # folders
