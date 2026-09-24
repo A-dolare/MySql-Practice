@@ -57,10 +57,12 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 |
 ├── Functions
 │   ├── 08_Multi_Row_Functions.sql
-
-
 │       ├── AVG()
 │       └── COUNT()
+│       ├── MAX()
+│       └── MIN()
+│       └── SUM()
+│   ├── 21_Single_Row_Functions.sql
 │
 ├── Group and Filtering
 │   ├── 09_GroupBY_Clause.sql
