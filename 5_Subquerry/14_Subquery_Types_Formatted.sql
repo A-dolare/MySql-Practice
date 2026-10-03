@@ -3,7 +3,7 @@
      2. MULTI ROW SUB QUERY
      */
 
-# SINGLEROW SUB QUERY - If the sub query returns exactly 1 record / value we call it as
+-- SINGLEROW SUB QUERY - If the sub query returns exactly 1 record / value we call it as
 -- Single Row Sub Query .
 
 -- Q1 WAQTD dname of ALLEN .
@@ -19,11 +19,11 @@ WHERE ENAME = 'ALLEN');
 -- | SALES |
 +-------+
 
-# MULTIROW SUBQUERY - If the sub query returns more than1 record / value we call it
-# as Multi Row Sub Query .
+-- # MULTIROW SUBQUERY - If the sub query returns more than1 record / value we call it
+-- # as Multi Row Sub Query .
 
-# Q1 WAQTD ename and salary of the employees earning more than
-# Employees of dept 10 .
+-- # Q1 WAQTD ename and salary of the employees earning more than
+-- # Employees of dept 10 .
 
 SELECT ENAME, SAL
 FROM EMP
@@ -41,7 +41,7 @@ For Comparing Relational Operators such as
 ( > , < , >= , <= ) .
 */
 
-# CORRECTED QUERY
+--  CORRECTED QUERY
 SELECT ENAME, SAL
 FROM EMP
 WHERE SAL > ALL (
@@ -54,9 +54,10 @@ WHERE DEPTNO = 10
        compare the values */
 
 /*                                                                Subquerry opertors                                                                       */
-
-# 1. ALL OPERATOR: "It is special Op used along with a relational Op ( > , < , > = , <= )
+/*
+--  1. ALL OPERATOR: "It is special Op used along with a relational Op ( > , < , > = , <= )
 to compare the values present at the RHS ".
+*/
 
 -- EX WAQTD SAL AND NAME OF EMPLOYEES HAVING SAL MORE THAN ALL THE EMPLOYEES IN DEPTNO = 10;
 
@@ -66,8 +67,8 @@ WHERE SAL > ALL (SELECT SAL
 FROM EMP
 WHERE DEPTNO = 10);
 
-# 2. ANY OPERATOR: "It is special Op used along with a relational Op ( > , < , > = , <= )
-to compare the values present at the RHS ".
+-- # 2. ANY OPERATOR: "It is special Op used along with a relational Op ( > , < , > = , <= )
+-- to compare the values present at the RHS ".
 
 -- EX WAQTD SAL AND NAME OF EMPLOYEES HAVING SAL MORE THAN ANY OF THE EMPLOYEES IN DEPTNO = 10;
 
@@ -89,7 +90,7 @@ WHERE DEPTNO = 10);
 -- | FORD   | 3000 |
 +--------+------+
 
-# COMBINED EXAMPLE QUESTIONS FOR ALL AND ANY OPERATORS
+-- # COMBINED EXAMPLE QUESTIONS FOR ALL AND ANY OPERATORS
 
 -- Q1  WAQTD name of the employee if the employee earns less than
 -- The employees working as salesman .

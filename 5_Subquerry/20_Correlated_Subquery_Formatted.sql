@@ -1,10 +1,14 @@
 -- =====================================================
 -- 20_Correlated_Subquery.sql
 -- Topic: Correlated Subqueries
--- Repository Formatted Version
 -- =====================================================
 
--- #                                    ASSIGNMENT QUESTIONS
+-- =====================================================
+-- EXISTS operator: returns TRUE if the subquery returns at least one row, FALSE otherwise.
+-- NOT EXISTS operator: returns TRUE if the subquery returns zero rows.
+-- =====================================================
+
+--                                     ASSIGNMENT QUESTIONS
 
 -- -----------------------------------------------------
 -- Q1 WAQTD dnames in which there are employees working .

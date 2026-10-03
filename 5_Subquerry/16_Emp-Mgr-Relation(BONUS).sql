@@ -1,6 +1,5 @@
 -- =====================================================
 -- FORMATTED VERSION: Emp-Mgr-Relation(1).sql
--- Cleaned for direct execution in MySQL
 -- =====================================================
 
 -- Q1 WAQTD name of Allen's manager .

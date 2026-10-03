@@ -3,7 +3,7 @@
 -- Cleaned for direct execution in MySQL
 -- =====================================================
 
-# CROSS JOIN
+--  CROSS JOIN
 
 -- -----------------------------------------------------
 -- WAQTD ename and dept name for all the employees .
@@ -75,7 +75,7 @@ FROM EMP CROSS JOIN DEPT ;
 
 -- NOTE: Few questions on cross join as it is not used much
 
-# INNER JOIN
+--  INNER JOIN
 
 -- ============================================================
 -- PART A

@@ -62,7 +62,23 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 │       ├── MAX()
 │       └── MIN()
 │       └── SUM()
-│   ├── 21_Single_Row_Functions.sql
+│   ├── 22_Single_Row_Functions.sql
+│       └── CONCAT()
+│       └── UPPER()
+│       └── LOWER()
+│       └── SUBSTR()
+│       └── REVERSE()
+│       └── REPLACE()
+│       └── MOD()
+│       └── ROUND()
+│       └── TRUNCATE()
+│       └── INSTR()
+│       └── LAST_DAY()
+│       └── DATE_FORMAT()
+│       └── IFNULL()
+│       └── LPAD()
+│       └── RPAD()
+│       └── TIMESTAMPDIFF(MONTH, d1, d2)
 │
 ├── Group and Filtering
 │   ├── 09_GroupBY_Clause.sql
@@ -73,17 +89,19 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 │   ├── 12_Subquerry_Case2.sql
 │   ├── 13_Subquerry_Case1_&_Case2.sql
 │   ├── 14_Subquerry_Types.sql
-│   ├── 15_Emp-Mgr-Relation(BONUS).sql
+│   ├── 15_Nested_Subquery.sql
+│   ├── 16_Emp-Mgr-Relation(BONUS).sql
 │   ├── 20_subquery_Co-related.sql
 │
 ├── Joins
-│   ├── 16_Cross-&-Inner_joins.sql
-│   ├── 17_Outer_joins.sql
+│   ├── 17_Cross-&-Inner_joins.sql
+│   ├── 18_Outer_joins.sql
 │       ├── Left_Outer_join
 │       ├── Right_Outer_join
 │       ├── Full_Outer_join
-│   ├── 18_Self_joins.sql
 │   ├── 19_Natural_joins.sql
+│   ├── 20_Self_joins.sql
+
 |
 ├── db
 │   └── scott.sql
@@ -171,56 +189,47 @@ Refer the Readme.md in db folder.
 - [x] Subqueries Case 1
 - [x] Subqueries Case 2
 
----
-
-## 🚧 Currently In Progress
-
 ### Subqueries 2
-- [ ] Single Row Subqueries
-- [ ] Multi Row Subqueries
-- [ ] Nested Subqueries
-
----
-
-## 📌 Planned Topics
-
+- [x] Single Row Subqueries
+- [x] Multi Row Subqueries
+- [x] Nested Subqueries
+  
 ### Selection (Filtering)
-
-- [ ] Subquery Operators
-  - [ ] ALL
-  - [ ] ANY
-  - [ ] EXISTS
-  - [ ] NOT EXISTS
+- [x] Subquery Operators
+- [x] ALL
+- [x] ANY
+- [x] EXISTS
+- [x] NOT EXISTS
 
 ### Joins
-- [ ] Cartesian Join / Cross Join
-- [ ] Inner Join / Equi Join
-- [ ] Left Outer Join
-- [ ] Right Outer Join
-- [ ] Full Outer Join
-- [ ] Self Join
+- [x] Cartesian Join / Cross Join
+- [x] Inner Join / Equi Join
+- [x] Left Outer Join
+- [x] Right Outer Join
+- [x] Full Outer Join
+- [x] Self Join
 
 ### Single Row Functions
 
-#### String Functions
-- [ ] LENGTH()
-- [ ] CONCAT()
-- [ ] UPPER()
-- [ ] LOWER()
-- [ ] INITCAP()
-- [ ] INSTR()
-- [ ] SUBSTR()
-- [ ] LPAD()
-- [ ] RPAD()
+- [x] LENGTH()
+- [x] CONCAT()
+- [x] UPPER()
+- [x] LOWER()
+- [x] SUBSTR()
+- [x] REVERSE()
+- [x] REPLACE()
+- [x] MOD()
+- [x] ROUND()
+- [x] TRUNCATE()
+- [x] INSTR()
+- [x] LAST_DAY()
+- [x] DATE_FORMAT()
+- [x] IFNULL()
+- [x] LPAD()
+- [x] RPAD()
+- [x] TIMESTAMPDIFF(MONTH, d1, d2)
 
-#### Numeric Functions
-- [ ] MOD()
-- [ ] TRUNC()
-- [ ] ROUND()
-
-#### Date Functions
-- [ ] MONTHS_BETWEEN()
-- [ ] LAST_DAY()
+## 🚧 Currently In Progress
 
 ### SQL Practice Sets
 - [ ] Topic-wise Assignments
@@ -228,6 +237,8 @@ Refer the Readme.md in db folder.
 - [ ] Interview-Oriented Questions
 
 ---
+
+## 📌 Planned Topics
 
 <!--# 📚 Learning Roadmap
 

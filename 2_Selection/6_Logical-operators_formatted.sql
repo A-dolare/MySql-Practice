@@ -1,7 +1,7 @@
 
 /*                                                              LOGICAL OPERATORS IN SQL                                                                     */
 
-# AND OPERATOR
+--  AND OPERATOR
 
 -- Q1 WAQTD name and deptno along with job for the
 -- employee working in dept 10 .

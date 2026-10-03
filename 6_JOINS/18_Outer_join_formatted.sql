@@ -4,7 +4,7 @@
 -- Directly executable in MySQL
 -- =====================================================
 
-# LEFT OUTER JOIN
+--  LEFT OUTER JOIN
 
 -- EX: WAQTD names and dnames of all the employees even though
 -- the employees Don’t work in any dept .
@@ -61,7 +61,7 @@ ON E.DEPTNO = D.DEPTNO
 -- | NULL   | OPERATIONS |
 -- +--------+------------+
 
-# FULL OUTER JOIN
+--  FULL OUTER JOIN
 
 -- EX: WAQTD names and dnames of all the employees and depts
 -- even though the employees Don’t work in any dept and a dept

@@ -6,8 +6,8 @@
 -- the common column is DEPTNO.
 -- =====================================================
 
-# Definition: It behaves as INNER JOIN if there is a relation between the given
-# two tables , else it behaves as CROSS JOIN
+-- # Definition: It behaves as INNER JOIN if there is a relation between the given
+-- # two tables , else it behaves as CROSS JOIN
 
 -- -----------------------------------------------------
 -- mysql> 1. WAQTD employee name and department name.

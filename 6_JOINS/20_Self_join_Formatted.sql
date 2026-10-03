@@ -139,7 +139,7 @@ JOIN   emp m ON e.mgr = m.empno
 WHERE  m.comm IS NOT NULL;
 -- Empty set (0.00 sec)
 
-#                                           ASSIGNMENT QUESTIONS
+--                                            ASSIGNMENT QUESTIONS
 
 -- Q1 WAQTD NAME OF THE EMPLOYEE AND HIS MANAGER'S
 -- NAME IF EMPLOYEE IS WORKING AS CLERK

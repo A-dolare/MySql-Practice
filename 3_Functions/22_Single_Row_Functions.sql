@@ -335,7 +335,7 @@ FROM DUAL;
 -- |            124.26 |
 -- +-------------------+
 
--- mysql> # 10. TRUNC - It is similar to ROUND() but it always rounds-off the given number to the lower value
+-- mysql>  10. TRUNC - It is similar to ROUND() but it always rounds-off the given number to the lower value
 
 -- EX: TRUNCATE 123.456
 
@@ -450,6 +450,7 @@ WHERE LENGTH(ENAME) - LENGTH(REPLACE(ENAME, 'A', '')) = 2;
 -- =====================================================
 -- 12 LAST_DAY - it is used to Obtain the last day in the particular of the given date
 -- =====================================================
+
 -- WAQTD LAST DAY OF THE MONTH FOR EACH EMPLOYEE'S HIREDATE
 SELECT LAST_DAY(HIREDATE)
 FROM EMP;
@@ -481,28 +482,8 @@ FROM DUAL;
 -- | 2026-08-31          |
 -- +---------------------+
 
-SELECT
-DATE_FORMAT(NOW(), '%Y') AS YYYY,          -- 2020
-DATE_FORMAT(NOW(), '%y') AS YY,            -- 20
-DATE_FORMAT(NOW(), '%M') AS MONTH,         -- July
-DATE_FORMAT(NOW(), '%b') AS MON,           -- Jul
-DATE_FORMAT(NOW(), '%m') AS MM,            -- 07
-DATE_FORMAT(NOW(), '%W') AS DAY,           -- Wednesday
-DATE_FORMAT(NOW(), '%a') AS DY,            -- Wed
-DATE_FORMAT(NOW(), '%d') AS DD,            -- 08
-DATE_FORMAT(NOW(), '%w') AS D,             -- 4
-DATE_FORMAT(NOW(), '%H') AS HH24,          -- 17
-DATE_FORMAT(NOW(), '%h') AS HH12,          -- 05
-DATE_FORMAT(NOW(), '%i') AS MI,            -- 22
-DATE_FORMAT(NOW(), '%s') AS SS;            -- 53
--- +------+------+--------+------+------+----------+------+------+------+------+------+------+------+
--- | YYYY | YY   | MONTH  | MON  | MM   | DAY      | DY   | DD   | D    | HH24 | HH12 | MI   | SS   |
--- +------+------+--------+------+------+----------+------+------+------+------+------+------+------+
--- | 2026 | 26   | August | Aug  | 08   | Thursday | Thu  | 20   | 4    | 15   | 03   | 53   | 43   |
--- +------+------+--------+------+------+----------+------+------+------+------+------+------+------+
-
 -- =====================================================
--- DATE_FORMAT()
+-- 13 DATE_FORMAT() - it is used to format a date or datetime value into a specified string pattern
 -- =====================================================
 
 -- EX: WAQTD current year, month, day, hour, minute and second using DATE_FORMAT()
@@ -527,7 +508,9 @@ DATE_FORMAT(NOW(), '%s') AS SS;            -- 53
 -- | 2026 | 26   | August | Aug  | 08   | Thursday | Thu  | 20   | 4    | 15   | 03   | 54   | 20   |
 -- +------+------+--------+------+------+----------+------+------+------+------+------+------+------+
 
--- IFNULL()
+-- =====================================================
+-- 14 IFNULL() - it is used to return the first non-NULL value from a list of arguments
+-- =====================================================
 
 -- EX
 
@@ -551,6 +534,141 @@ FROM EMP;
 -- |                  3000 |
 -- |                  1300 |
 -- +-----------------------+
+
+-- =====================================================
+-- 15 LPAD() - it is used to pad a string on the left side with a specified character up to a given length
+-- =====================================================
+
+-- Q1. Display ENAME left-padded with '*' to a total length of 12.
+ SELECT LPAD(ENAME, 12, '*') AS PADDED_NAME
+ FROM EMP;
+-- +--------------+
+-- | PADDED_NAME  |
+-- +--------------+
+-- | *******SMITH |
+-- | *******ALLEN |
+-- | ********WARD |
+-- | *******JONES |
+-- | ******MARTIN |
+-- | *******BLAKE |
+-- | *******CLARK |
+-- | *******SCOTT |
+-- | ********KING |
+-- | ******TURNER |
+-- | *******ADAMS |
+-- | *******JAMES |
+-- | ********FORD |
+-- | ******MILLER |
+-- +--------------+
+-- 14 rows in set (0.01 sec)
+
+-- Q2. Zero-pad EMPNO to 5 digits.
+ SELECT EMPNO, LPAD(EMPNO, 5, '0') AS PADDED_NO
+ FROM EMP;
+-- +-------+-----------+
+-- | EMPNO | PADDED_NO |
+-- +-------+-----------+
+-- |  7369 | 07369     |
+-- |  7499 | 07499     |
+-- |  7521 | 07521     |
+-- |  7566 | 07566     |
+-- |  7654 | 07654     |
+-- |  7698 | 07698     |
+-- |  7782 | 07782     |
+-- |  7788 | 07788     |
+-- |  7839 | 07839     |
+-- |  7844 | 07844     |
+-- |  7876 | 07876     |
+-- |  7900 | 07900     |
+-- |  7902 | 07902     |
+-- |  7934 | 07934     |
+-- +-------+-----------+
+-- 14 rows in set (0.00 sec)
+
+-- =====================================================
+-- 16 RPAD() - it is used to pad a string on the right side with a specified character up to a given length
+-- =====================================================
+
+-- Q1. Display DNAME right-padded with '.' to a total length of 15.
+SELECT RPAD(DNAME, 15, '.') AS PADDED_DEPT
+FROM DEPT;   
+-- +-----------------+
+-- | PADDED_DEPT     |
+-- +-----------------+
+-- | ACCOUNTING..... |
+-- | RESEARCH....... |
+-- | SALES.......... |
+-- | OPERATIONS..... |
+-- +-----------------+
+-- 4 rows in set (0.01 sec)
+
+-- =====================================================
+-- 17 TIMESTAMPDIFF(MONTH, d1, d2) - it is used to calculate the number of months between two given dates (MySQL equivalent of MONTHS_BETWEEN)
+-- =====================================================
+
+-- Q1. Find how many months each employee has been working (from HIREDATE to today).
+ SELECT ENAME, HIREDATE,
+        TIMESTAMPDIFF(MONTH, HIREDATE, CURDATE()) AS MONTHS_WORKED
+ FROM EMP;
+-- +--------+------------+---------------+
+-- | ENAME  | HIREDATE   | MONTHS_WORKED |
+-- +--------+------------+---------------+
+-- | SMITH  | 1980-12-17 |           549 |
+-- | ALLEN  | 1981-02-20 |           547 |
+-- | WARD   | 1981-02-22 |           547 |
+-- | JONES  | 1981-04-02 |           546 |
+-- | MARTIN | 1981-09-28 |           540 |
+-- | BLAKE  | 1981-05-01 |           545 |
+-- | CLARK  | 1981-06-09 |           543 |
+-- | SCOTT  | 1982-12-09 |           525 |
+-- | KING   | 1981-11-17 |           538 |
+-- | TURNER | 1980-09-08 |           552 |
+-- | ADAMS  | 1983-01-12 |           524 |
+-- | JAMES  | 1981-12-03 |           538 |
+-- | FORD   | 1981-12-03 |           538 |
+-- | MILLER | 1982-01-23 |           536 |
+-- +--------+------------+---------------+
+-- 14 rows in set (0.00 sec)
+
+-- Q2. Find employees who have worked for more than 24 months.
+ SELECT ENAME, HIREDATE,
+        TIMESTAMPDIFF(MONTH, HIREDATE, CURDATE()) AS MONTHS_WORKED
+ FROM EMP
+ WHERE TIMESTAMPDIFF(MONTH, HIREDATE, CURDATE()) > 24;
+-- +--------+------------+---------------+
+-- | ENAME  | HIREDATE   | MONTHS_WORKED |
+-- +--------+------------+---------------+
+-- | SMITH  | 1980-12-17 |           549 |
+-- | ALLEN  | 1981-02-20 |           547 |
+-- | WARD   | 1981-02-22 |           547 |
+-- | JONES  | 1981-04-02 |           546 |
+-- | MARTIN | 1981-09-28 |           540 |
+-- | BLAKE  | 1981-05-01 |           545 |
+-- | CLARK  | 1981-06-09 |           543 |
+-- | SCOTT  | 1982-12-09 |           525 |
+-- | KING   | 1981-11-17 |           538 |
+-- | TURNER | 1980-09-08 |           552 |
+-- | ADAMS  | 1983-01-12 |           524 |
+-- | JAMES  | 1981-12-03 |           538 |
+-- | FORD   | 1981-12-03 |           538 |
+-- | MILLER | 1982-01-23 |           536 |
+-- +--------+------------+---------------+
+-- 14 rows in set (0.00 sec)
+
+-- Q3. Find the gap in months between the earliest and latest hire date in each department.
+ SELECT D.DNAME,
+        TIMESTAMPDIFF(MONTH, MIN(E.HIREDATE), MAX(E.HIREDATE)) AS MONTH_GAP
+ FROM EMP E JOIN DEPT D ON E.DEPTNO = D.DEPTNO
+ GROUP BY D.DNAME;
+-- +------------+-----------+
+-- | DNAME      | MONTH_GAP |
+-- +------------+-----------+
+-- | RESEARCH   |        24 |
+-- | SALES      |        14 |
+-- | ACCOUNTING |         7 |
+-- +------------+-----------+
+-- 3 rows in set (0.00 sec)
+
 
 /*                                                                    ASSIGNMENT QUESTIONS                                                                */
 

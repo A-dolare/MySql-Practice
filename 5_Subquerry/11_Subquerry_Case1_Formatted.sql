@@ -1,12 +1,12 @@
 
 
-# Why / When Do we use SUB QUERY :
+-- # Why / When Do we use SUB QUERY :
 
-# Case 1 : Whenever we have Unknowns present in the Question
--- We use sub query to find the Unknown .
+-- # Case 1 : Whenever we have Unknowns present in the Question
+-- -- We use sub query to find the Unknown .
 
-# CASE-2 : Whenever the data to be selected and the condition to be
--- executed are present in different tables we use Sub Query .
+-- # CASE-2 : Whenever the data to be selected and the condition to be
+-- -- executed are present in different tables we use Sub Query .
 
 
 /*                                                              CASE 1 OF USING SUBQUERIES                                                                    */
@@ -627,5 +627,3 @@ WHERE ENAME = 'KING');
 -- | FORD   | 3000 | ANALYST  |
 -- | MILLER | 1300 | CLERK    |
 -- +--------+------+----------+
-
-NOTEE
