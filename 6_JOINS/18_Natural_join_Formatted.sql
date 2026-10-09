@@ -9,6 +9,92 @@
 -- # Definition: It behaves as INNER JOIN if there is a relation between the given
 -- # two tables , else it behaves as CROSS JOIN
 
+-- Q1 WAQTD employee names along with their department names.
+
+SELECT ENAME, DNAME
+FROM EMP
+NATURAL JOIN DEPT;
+-- +--------+------------+
+-- | ENAME  | DNAME      |
+-- +--------+------------+
+-- | SMITH  | RESEARCH   |
+-- | ALLEN  | SALES      |
+-- | WARD   | SALES      |
+-- | JONES  | RESEARCH   |
+-- | MARTIN | SALES      |
+-- | BLAKE  | SALES      |
+-- | CLARK  | ACCOUNTING |
+-- | SCOTT  | RESEARCH   |
+-- | KING   | ACCOUNTING |
+-- | TURNER | SALES      |
+-- | ADAMS  | RESEARCH   |
+-- | JAMES  | SALES      |
+-- | FORD   | RESEARCH   |
+-- | MILLER | ACCOUNTING |
+-- +--------+------------+
+-- 14 rows in set (0.00 sec)
+
+-- Q2 WAQTD employee name, job and department location.
+
+SELECT ENAME, JOB, LOC
+FROM EMP
+NATURAL JOIN DEPT;
+-- +--------+-----------+----------+
+-- | ENAME  | JOB       | LOC      |
+-- +--------+-----------+----------+
+-- | SMITH  | CLERK     | DALLAS   |
+-- | ALLEN  | SALESMAN  | CHICAGO  |
+-- | WARD   | SALESMAN  | CHICAGO  |
+-- | JONES  | MANAGER   | DALLAS   |
+-- | MARTIN | SALESMAN  | CHICAGO  |
+-- | BLAKE  | MANAGER   | CHICAGO  |
+-- | CLARK  | MANAGER   | NEW YORK |
+-- | SCOTT  | ANALYST   | DALLAS   |
+-- | KING   | PRESIDENT | NEW YORK |
+-- | TURNER | SALESMAN  | CHICAGO  |
+-- | ADAMS  | CLERK     | DALLAS   |
+-- | JAMES  | CLERK     | CHICAGO  |
+-- | FORD   | ANALYST   | DALLAS   |
+-- | MILLER | CLERK     | NEW YORK |
+-- +--------+-----------+----------+
+-- 14 rows in set (0.00 sec)
+
+-- Q3 WAQTD employee name and department name for employees earning more than 200SELECT ENAME, DNAME
+FROM EMP
+NATURAL JOIN DEPT
+WHERE SAL > 2000;
+-- +-------+------------+
+-- | ENAME | DNAME      |
+-- +-------+------------+
+-- | JONES | RESEARCH   |
+-- | BLAKE | SALES      |
+-- | CLARK | ACCOUNTING |
+-- | SCOTT | RESEARCH   |
+-- | KING  | ACCOUNTING |
+-- | FORD  | RESEARCH   |
+-- +-------+------------+
+-- 6 rows in set (0.00 sec)
+
+-- Q4 WAQTD employee name, salary and department location for employees working in SALES departme
+SELECT ENAME, SAL, LOC
+FROM EMP
+NATURAL JOIN DEPT
+WHERE DNAME = 'SALES';
+-- +--------+------+---------+
+-- | ENAME  | SAL  | LOC     |
+-- +--------+------+---------+
+-- | ALLEN  | 1600 | CHICAGO |
+-- | WARD   | 1250 | CHICAGO |
+-- | MARTIN | 1250 | CHICAGO |
+-- | BLAKE  | 2850 | CHICAGO |
+-- | TURNER | 1500 | CHICAGO |
+-- | JAMES  |  950 | CHICAGO |
+-- +--------+------+---------+
+-- 6 rows in set (0.00 sec)
+
+
+--                                                               ASSIGNMENT QUESTIONS 
+
 -- -----------------------------------------------------
 -- mysql> 1. WAQTD employee name and department name.
 -- -----------------------------------------------------

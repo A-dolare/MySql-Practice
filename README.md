@@ -31,8 +31,7 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 │
 ├── Selection
 │   ├── 03_Where_Clause.sql
-│   ├── 04_Concatenation_Operators.sql
-│   ├── 05_Relational_Operators.sql
+│   ├── 04_Relational_Operators.sql
 │   │   ├── = Operator
 │   │   ├── > Operator
 │   │   ├── < Operator
@@ -40,12 +39,12 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 │   │   ├── <= Operator
 │   │   └── <> / != Operator
 │   │
-│   ├── 06_Logical_Operators.sql
+│   ├── 05_Logical_Operators.sql
 │   │   ├── AND Operator
 │   │   ├── OR Operator
 │   │   └── NOT Operator
 │   │
-│   └── 07_Special_Operators.sql
+│   └── 06_Special_Operators.sql
 │       ├── IN Operator
 │       ├── NOT IN Operator
 │       ├── BETWEEN Operator
@@ -56,13 +55,13 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 │       └── NOT LIKE Operator
 |
 ├── Functions
-│   ├── 08_Multi_Row_Functions.sql
+│   ├── 07_Multi_Row_Functions.sql
 │       ├── AVG()
 │       └── COUNT()
 │       ├── MAX()
 │       └── MIN()
 │       └── SUM()
-│   ├── 22_Single_Row_Functions.sql
+│   ├── 21_Single_Row_Functions.sql
 │       └── CONCAT()
 │       └── UPPER()
 │       └── LOWER()
@@ -81,27 +80,28 @@ Most SQL practice platforms are excellent for interview preparation, but beginne
 │       └── TIMESTAMPDIFF(MONTH, d1, d2)
 │
 ├── Group and Filtering
-│   ├── 09_GroupBY_Clause.sql
-│   ├── 10_Having_Clause.sql
+│   ├── 08_GroupBY_Clause.sql
+│   ├── 09_Having_Clause.sql
 |
 ├── Subquerry
-│   ├── 11_Subquerry_Case1.sql
-│   ├── 12_Subquerry_Case2.sql
-│   ├── 13_Subquerry_Case1_&_Case2.sql
-│   ├── 14_Subquerry_Types.sql
-│   ├── 15_Nested_Subquery.sql
-│   ├── 16_Emp-Mgr-Relation(BONUS).sql
+│   ├── 10_Subquerry_Case1.sql
+│   ├── 11_Subquerry_Case2.sql
+│   ├── 12_Subquerry_Case1_&_Case2.sql
+│   ├── 13_Subquerry_Types.sql
+│   ├── 14_Nested_Subquery.sql
+│   ├── 15_Emp-Mgr-Relation(BONUS).sql
 │   ├── 20_subquery_Co-related.sql
 │
 ├── Joins
-│   ├── 17_Cross-&-Inner_joins.sql
-│   ├── 18_Outer_joins.sql
+│   ├── 16_Cross-&-Inner_joins.sql
+│   ├── 17_Outer_joins.sql
 │       ├── Left_Outer_join
 │       ├── Right_Outer_join
 │       ├── Full_Outer_join
-│   ├── 19_Natural_joins.sql
-│   ├── 20_Self_joins.sql
-
+│   ├── 18_Natural_joins.sql
+│   ├── 19_Self_joins.sql
+|
+│   ├── 23_INTERVIEW_ORIENTED_QUESTIONS.sql
 |
 ├── db
 │   └── scott.sql
@@ -229,12 +229,14 @@ Refer the Readme.md in db folder.
 - [x] RPAD()
 - [x] TIMESTAMPDIFF(MONTH, d1, d2)
 
+### SQL Practice Sets
+- [x] Topic-wise Assignments
+- [x] Mixed Practice Questions
+- [x] Interview-Oriented Questions
+
 ## 🚧 Currently In Progress
 
-### SQL Practice Sets
-- [ ] Topic-wise Assignments
-- [ ] Mixed Practice Questions
-- [ ] Interview-Oriented Questions
+
 
 ---
 
