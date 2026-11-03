@@ -18,12 +18,12 @@ WHERE DEPTNO = (
     FROM EMP
     WHERE ENAME = 'ALLEN'
 );
-+-------+---------+
-| DNAME | LOC     |
-+-------+---------+
-| SALES | CHICAGO |
-+-------+---------+
-1 row in set (0.01 sec)
+-- +-------+---------+
+-- | DNAME | LOC     |
+-- +-------+---------+
+-- | SALES | CHICAGO |
+-- +-------+---------+
+-- 1 row in set (0.01 sec)
 
 
 -- Q2 WAQTD the names and salaries of employees earning more than SMITH.
@@ -35,24 +35,24 @@ WHERE SAL > (
     FROM EMP
     WHERE ENAME = 'SMITH'
 );
-+--------+------+
-| ENAME  | SAL  |
-+--------+------+
-| ALLEN  | 1600 |
-| WARD   | 1250 |
-| JONES  | 2975 |
-| MARTIN | 1250 |
-| BLAKE  | 2850 |
-| CLARK  | 2450 |
-| SCOTT  | 3000 |
-| KING   | 5000 |
-| TURNER | 1500 |
-| ADAMS  | 1100 |
-| JAMES  |  950 |
-| FORD   | 3000 |
-| MILLER | 1300 |
-+--------+------+
-13 rows in set (0.00 sec)
+-- +--------+------+
+-- | ENAME  | SAL  |
+-- +--------+------+
+-- | ALLEN  | 1600 |
+-- | WARD   | 1250 |
+-- | JONES  | 2975 |
+-- | MARTIN | 1250 |
+-- | BLAKE  | 2850 |
+-- | CLARK  | 2450 |
+-- | SCOTT  | 3000 |
+-- | KING   | 5000 |
+-- | TURNER | 1500 |
+-- | ADAMS  | 1100 |
+-- | JAMES  |  950 |
+-- | FORD   | 3000 |
+-- | MILLER | 1300 |
+-- +--------+------+
+-- 13 rows in set (0.00 sec)
 
 
 -- Q3 WAQTD the names and salaries of employees working
@@ -65,17 +65,17 @@ WHERE DEPTNO IN (
     FROM EMP
     WHERE COMM IS NOT NULL
 );
-+--------+------+
-| ENAME  | SAL  |
-+--------+------+
-| ALLEN  | 1600 |
-| WARD   | 1250 |
-| MARTIN | 1250 |
-| BLAKE  | 2850 |
-| TURNER | 1500 |
-| JAMES  |  950 |
-+--------+------+
-6 rows in set (0.00 sec)
+-- +--------+------+
+-- | ENAME  | SAL  |
+-- +--------+------+
+-- | ALLEN  | 1600 |
+-- | WARD   | 1250 |
+-- | MARTIN | 1250 |
+-- | BLAKE  | 2850 |
+-- | TURNER | 1500 |
+-- | JAMES  |  950 |
+-- +--------+------+
+-- 6 rows in set (0.00 sec)
 
 
 -- Q4 WAQTD the names and salaries of employees
@@ -88,7 +88,7 @@ WHERE SAL > ALL (
     FROM EMP
     WHERE DEPTNO = 10
 );
-Empty set (0.00 sec)
+-- Empty set (0.00 sec)
 
 
 -- Q5 WAQTD the names and salaries of
@@ -101,20 +101,20 @@ WHERE SAL > ANY (
     FROM EMP
     WHERE JOB = 'SALESMAN'
 );
-+--------+------+
-| ENAME  | SAL  |
-+--------+------+
-| ALLEN  | 1600 |
-| JONES  | 2975 |
-| BLAKE  | 2850 |
-| CLARK  | 2450 |
-| SCOTT  | 3000 |
-| KING   | 5000 |
-| TURNER | 1500 |
-| FORD   | 3000 |
-| MILLER | 1300 |
-+--------+------+
-9 rows in set (0.00 sec)
+-- +--------+------+
+-- | ENAME  | SAL  |
+-- +--------+------+
+-- | ALLEN  | 1600 |
+-- | JONES  | 2975 |
+-- | BLAKE  | 2850 |
+-- | CLARK  | 2450 |
+-- | SCOTT  | 3000 |
+-- | KING   | 5000 |
+-- | TURNER | 1500 |
+-- | FORD   | 3000 |
+-- | MILLER | 1300 |
+-- +--------+------+
+-- 9 rows in set (0.00 sec)
 
 
 -- Q6 WAQTD the names and salaries of employees
@@ -127,19 +127,19 @@ WHERE SAL < ALL (
     FROM EMP
     WHERE JOB = 'MANAGER'
 );
-+--------+------+
-| ENAME  | SAL  |
-+--------+------+
-| SMITH  |  800 |
-| ALLEN  | 1600 |
-| WARD   | 1250 |
-| MARTIN | 1250 |
-| TURNER | 1500 |
-| ADAMS  | 1100 |
-| JAMES  |  950 |
-| MILLER | 1300 |
-+--------+------+
-8 rows in set (0.00 sec)
+-- +--------+------+
+-- | ENAME  | SAL  |
+-- +--------+------+
+-- | SMITH  |  800 |
+-- | ALLEN  | 1600 |
+-- | WARD   | 1250 |
+-- | MARTIN | 1250 |
+-- | TURNER | 1500 |
+-- | ADAMS  | 1100 |
+-- | JAMES  |  950 |
+-- | MILLER | 1300 |
+-- +--------+------+
+-- 8 rows in set (0.00 sec)
 
 
 -- Q7 WAQTD the third-highest distinct salary in the company.
@@ -154,12 +154,12 @@ WHERE SAL < (
         FROM EMP
     )
 );
-+----------------------+
-| THIRD_HIGHEST_SALARY |
-+----------------------+
-|                 2975 |
-+----------------------+
-1 row in set (0.00 sec)
+-- +----------------------+
+-- | THIRD_HIGHEST_SALARY |
+-- +----------------------+
+-- |                 2975 |
+-- +----------------------+
+-- 1 row in set (0.00 sec)
 
 
 -- Q8 WAQTD the third-lowest distinct salary in the company.
@@ -174,12 +174,12 @@ WHERE SAL > (
         FROM EMP
     )
 );
-+---------------------+
-| THIRD_LOWEST_SALARY |
-+---------------------+
-|                1100 |
-+---------------------+
-1 row in set (0.00 sec)
+-- +---------------------+
+-- | THIRD_LOWEST_SALARY |
+-- +---------------------+
+-- |                1100 |
+-- +---------------------+
+-- 1 row in set (0.00 sec)
 
 
 -- Q9 WAQTD the name and employee number of the
@@ -199,12 +199,12 @@ WHERE SAL = (
         )
     )
 );
-+-------+-------+
-| ENAME | EMPNO |
-+-------+-------+
-| JONES |  7566 |
-+-------+-------+
-1 row in set (0.00 sec)
+-- +-------+-------+
+-- | ENAME | EMPNO |
+-- +-------+-------+
+-- | JONES |  7566 |
+-- +-------+-------+
+-- 1 row in set (0.00 sec)
 
 
 -- Q10 WAQTD the department name of the
@@ -224,12 +224,12 @@ WHERE DEPTNO IN (
         )
     )
 );
-+-------+
-| DNAME |
-+-------+
-| SALES |
-+-------+
-1 row in set (0.00 sec)
+-- +-------+
+-- | DNAME |
+-- +-------+
+-- | SALES |
+-- +-------+
+-- 1 row in set (0.00 sec)
 
 
 -- Q11 WAQTD the name of SMITH's manager's manager.
@@ -245,12 +245,12 @@ WHERE EMPNO = (
         WHERE ENAME = 'SMITH'
     )
 );
-+-------+
-| ENAME |
-+-------+
-| JONES |
-+-------+
-1 row in set (0.00 sec)
+-- +-------+
+-- | ENAME |
+-- +-------+
+-- | JONES |
+-- +-------+
+-- 1 row in set (0.00 sec)
 
 
 -- Q12 WAQTD the names and jobs of all employees reporting directly to KING.
@@ -262,14 +262,14 @@ WHERE MGR = (
     FROM EMP
     WHERE ENAME = 'KING'
 );
-+-------+---------+
-| ENAME | JOB     |
-+-------+---------+
-| JONES | MANAGER |
-| BLAKE | MANAGER |
-| CLARK | MANAGER |
-+-------+---------+
-3 rows in set (0.00 sec)
+-- +-------+---------+
+-- | ENAME | JOB     |
+-- +-------+---------+
+-- | JONES | MANAGER |
+-- | BLAKE | MANAGER |
+-- | CLARK | MANAGER |
+-- +-------+---------+
+-- 3 rows in set (0.00 sec)
 
 
 -- Q13 WAQTD the names and hire dates of
@@ -282,15 +282,15 @@ WHERE HIREDATE < ALL (
     FROM EMP
     WHERE JOB = 'MANAGER'
 );
-+--------+------------+
-| ENAME  | HIREDATE   |
-+--------+------------+
-| SMITH  | 1980-12-17 |
-| ALLEN  | 1981-02-20 |
-| WARD   | 1981-02-22 |
-| TURNER | 1980-09-08 |
-+--------+------------+
-4 rows in set (0.00 sec)
+-- +--------+------------+
+-- | ENAME  | HIREDATE   |
+-- +--------+------------+
+-- | SMITH  | 1980-12-17 |
+-- | ALLEN  | 1981-02-20 |
+-- | WARD   | 1981-02-22 |
+-- | TURNER | 1980-09-08 |
+-- +--------+------------+
+-- 4 rows in set (0.00 sec)
 
 
 -- Q14 WAQTD the names, department numbers and salaries of employees earning
@@ -304,22 +304,22 @@ WHERE EXISTS (
     WHERE E2.DEPTNO = E1.DEPTNO
       AND E2.SAL < E1.SAL
 );
-+--------+--------+------+
-| ENAME  | DEPTNO | SAL  |
-+--------+--------+------+
-| ALLEN  |     30 | 1600 |
-| WARD   |     30 | 1250 |
-| JONES  |     20 | 2975 |
-| MARTIN |     30 | 1250 |
-| BLAKE  |     30 | 2850 |
-| CLARK  |     10 | 2450 |
-| SCOTT  |     20 | 3000 |
-| KING   |     10 | 5000 |
-| TURNER |     30 | 1500 |
-| ADAMS  |     20 | 1100 |
-| FORD   |     20 | 3000 |
-+--------+--------+------+
-11 rows in set (0.00 sec)
+-- +--------+--------+------+
+-- | ENAME  | DEPTNO | SAL  |
+-- +--------+--------+------+
+-- | ALLEN  |     30 | 1600 |
+-- | WARD   |     30 | 1250 |
+-- | JONES  |     20 | 2975 |
+-- | MARTIN |     30 | 1250 |
+-- | BLAKE  |     30 | 2850 |
+-- | CLARK  |     10 | 2450 |
+-- | SCOTT  |     20 | 3000 |
+-- | KING   |     10 | 5000 |
+-- | TURNER |     30 | 1500 |
+-- | ADAMS  |     20 | 1100 |
+-- | FORD   |     20 | 3000 |
+-- +--------+--------+------+
+-- 11 rows in set (0.00 sec)
 
 
 -- Q15 WAQTD the names, department numbers and salaries of employees
@@ -332,15 +332,15 @@ WHERE E1.SAL = (
     FROM EMP E2
     WHERE E2.DEPTNO = E1.DEPTNO
 );
-+-------+--------+------+
-| ENAME | DEPTNO | SAL  |
-+-------+--------+------+
-| BLAKE |     30 | 2850 |
-| SCOTT |     20 | 3000 |
-| KING  |     10 | 5000 |
-| FORD  |     20 | 3000 |
-+-------+--------+------+
-4 rows in set (0.00 sec)
+-- +-------+--------+------+
+-- | ENAME | DEPTNO | SAL  |
+-- +-------+--------+------+
+-- | BLAKE |     30 | 2850 |
+-- | SCOTT |     20 | 3000 |
+-- | KING  |     10 | 5000 |
+-- | FORD  |     20 | 3000 |
+-- +-------+--------+------+
+-- 4 rows in set (0.00 sec)
 
 
 -- Q16 WAQTD the names of departments in which at least one employee works.
@@ -352,14 +352,14 @@ WHERE EXISTS (
     FROM EMP E
     WHERE E.DEPTNO = D.DEPTNO
 );
-+------------+
-| DNAME      |
-+------------+
-| ACCOUNTING |
-| RESEARCH   |
-| SALES      |
-+------------+
-3 rows in set (0.00 sec)
+-- +------------+
+-- | DNAME      |
+-- +------------+
+-- | ACCOUNTING |
+-- | RESEARCH   |
+-- | SALES      |
+-- +------------+
+-- 3 rows in set (0.00 sec)
 
 
 -- Q17 WAQTD the names and locations of departments in which no employees work.
@@ -371,12 +371,12 @@ WHERE NOT EXISTS (
     FROM EMP E
     WHERE E.DEPTNO = D.DEPTNO
 );
-+------------+--------+
-| DNAME      | LOC    |
-+------------+--------+
-| OPERATIONS | BOSTON |
-+------------+--------+
-1 row in set (0.00 sec)
+-- +------------+--------+
+-- | DNAME      | LOC    |
+-- +------------+--------+
+-- | OPERATIONS | BOSTON |
+-- +------------+--------+
+-- 1 row in set (0.00 sec)
 
 
 -- Q18 WAQTD the names and employee numbers
@@ -389,17 +389,17 @@ WHERE EXISTS (
     FROM EMP E2
     WHERE E2.MGR = E1.EMPNO
 );
-+-------+-------+
-| ENAME | EMPNO |
-+-------+-------+
-| JONES |  7566 |
-| BLAKE |  7698 |
-| CLARK |  7782 |
-| SCOTT |  7788 |
-| KING  |  7839 |
-| FORD  |  7902 |
-+-------+-------+
-6 rows in set (0.00 sec)
+-- +-------+-------+
+-- | ENAME | EMPNO |
+-- +-------+-------+
+-- | JONES |  7566 |
+-- | BLAKE |  7698 |
+-- | CLARK |  7782 |
+-- | SCOTT |  7788 |
+-- | KING  |  7839 |
+-- | FORD  |  7902 |
+-- +-------+-------+
+-- 6 rows in set (0.00 sec)
 
 
 -- Q19 WAQTD the names and employee numbers of employees who do not manage anyone.
@@ -411,19 +411,19 @@ WHERE NOT EXISTS (
     FROM EMP E2
     WHERE E2.MGR = E1.EMPNO
 );
-+--------+-------+
-| ENAME  | EMPNO |
-+--------+-------+
-| SMITH  |  7369 |
-| ALLEN  |  7499 |
-| WARD   |  7521 |
-| MARTIN |  7654 |
-| TURNER |  7844 |
-| ADAMS  |  7876 |
-| JAMES  |  7900 |
-| MILLER |  7934 |
-+--------+-------+
-8 rows in set (0.00 sec)
+-- +--------+-------+
+-- | ENAME  | EMPNO |
+-- +--------+-------+
+-- | SMITH  |  7369 |
+-- | ALLEN  |  7499 |
+-- | WARD   |  7521 |
+-- | MARTIN |  7654 |
+-- | TURNER |  7844 |
+-- | ADAMS  |  7876 |
+-- | JAMES  |  7900 |
+-- | MILLER |  7934 |
+-- +--------+-------+
+-- 8 rows in set (0.00 sec)
 
 
 -- Q20 WAQTD the department names and locations of
@@ -437,9 +437,9 @@ WHERE EXISTS (
     WHERE E.DEPTNO = D.DEPTNO
       AND E.SAL > 3000
 );
-+------------+----------+
-| DNAME      | LOC      |
-+------------+----------+
-| ACCOUNTING | NEW YORK |
-+------------+----------+
-1 row in set (0.00 sec)
+-- +------------+----------+
+-- | DNAME      | LOC      |
+-- +------------+----------+
+-- | ACCOUNTING | NEW YORK |
+-- +------------+----------+
+-- 1 row in set (0.00 sec)
